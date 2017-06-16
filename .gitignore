@@ -1,0 +1,10 @@
+*.suo
+*.resharper
+*.user
+*.nupkg
+src/.nuget/NuGet.config
+src/Grappachu.Interop.RabbitMQ/bin/*
+src/Grappachu.Interop.RabbitMQ/obj/*
+src/Grappachu.Interop.RabbitMQ.Test/bin/*
+src/Grappachu.Interop.RabbitMQ.Test/obj/*
+
