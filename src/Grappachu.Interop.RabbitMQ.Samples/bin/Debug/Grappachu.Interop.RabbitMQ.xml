@@ -1,0 +1,184 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Grappachu.Interop.RabbitMQ</name>
+    </assembly>
+    <members>
+        <member name="T:Grappachu.Interop.RabbitMQ.RabbitMqAbstractConsumer`1">
+            <summary>
+                This is the base class to inherit from when creating a consumer based on RabbitMQ
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="M:Grappachu.Interop.RabbitMQ.RabbitMqAbstractConsumer`1.#ctor(Grappachu.Interop.RabbitMQ.RabbitMqSettings)">
+            <summary>
+                Acrivates a new instance of <see cref="T:Grappachu.Interop.RabbitMQ.RabbitMqAbstractConsumer`1" />
+            </summary>
+            <param name="rabbitMqSettings"></param>
+        </member>
+        <member name="E:Grappachu.Interop.RabbitMQ.RabbitMqAbstractConsumer`1.MessageReceived">
+            <inheritdoc />
+        </member>
+        <member name="M:Grappachu.Interop.RabbitMQ.RabbitMqAbstractConsumer`1.BeginConsume">
+            <inheritdoc />
+        </member>
+        <member name="M:Grappachu.Interop.RabbitMQ.RabbitMqAbstractConsumer`1.EndConsume">
+            <inheritdoc />
+        </member>
+        <member name="M:Grappachu.Interop.RabbitMQ.RabbitMqAbstractConsumer`1.Dispose">
+            <inheritdoc />
+        </member>
+        <member name="M:Grappachu.Interop.RabbitMQ.RabbitMqAbstractConsumer`1.OnMessageConsuming(Grappachu.Core.Messaging.Envelope{`0})">
+            <summary>
+                Raises the event <see cref="E:Grappachu.Interop.RabbitMQ.RabbitMqAbstractConsumer`1.MessageReceived" /> to execute custom user logic
+            </summary>
+        </member>
+        <member name="M:Grappachu.Interop.RabbitMQ.RabbitMqAbstractConsumer`1.OnMessageConsumed(RabbitMQ.Client.IModel,Grappachu.Core.Messaging.Envelope{`0},RabbitMQ.Client.Events.BasicDeliverEventArgs)">
+            <summary>
+                Executes the basic Ack or Nack policies after a message is consumed
+            </summary>
+            <param name="channel"></param>
+            <param name="qm"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:Grappachu.Interop.RabbitMQ.RabbitMqAbstractConsumer`1.OnReadingMessage(RabbitMQ.Client.Events.BasicDeliverEventArgs)">
+            <summary>
+                Gets the raw message received data
+            </summary>
+            <param name="e"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Grappachu.Interop.RabbitMQ.RabbitMqAbstractConsumer`1.OnDeserializingMessage(System.String,System.String)">
+            <summary>
+                Deserialize the received message into {T}
+            </summary>
+            <param name="messageContentRaw"></param>
+            <param name="contentType"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Grappachu.Interop.RabbitMQ.RabbitMqAbstractConsumer`1.OnError(System.Exception)">
+            <summary>
+                Runs when an error occurs during message consumption
+            </summary>
+            <param name="exception"></param>
+        </member>
+        <member name="M:Grappachu.Interop.RabbitMQ.RabbitMqAbstractConsumer`1.Dispose(System.Boolean)">
+            <summary>
+                Closes channel and release resources
+            </summary>
+            <param name="disposing"></param>
+        </member>
+        <member name="T:Grappachu.Interop.RabbitMQ.RabbitMqAbstractPublisher`1">
+            <summary>
+                This is the base class to inherit from when creating a publihser based on RabbitMQ
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="M:Grappachu.Interop.RabbitMQ.RabbitMqAbstractPublisher`1.#ctor(Grappachu.Interop.RabbitMQ.RabbitMqSettings)">
+            <summary>
+                Activates a new instance of <see cref="T:Grappachu.Interop.RabbitMQ.RabbitMqAbstractPublisher`1" />
+            </summary>
+            <param name="settings"></param>
+        </member>
+        <member name="M:Grappachu.Interop.RabbitMQ.RabbitMqAbstractPublisher`1.Publish(`0)">
+            <inheritdoc />
+        </member>
+        <member name="M:Grappachu.Interop.RabbitMQ.RabbitMqAbstractPublisher`1.OnSerializeMessage(`0,System.String@)">
+            <summary>
+                Serializes the message to a string before sending and sets its content type
+            </summary>
+            <param name="messageObject"></param>
+            <param name="contentType"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Grappachu.Interop.RabbitMQ.RabbitMqAbstractPublisher`1.OnPublishing(Grappachu.Interop.RabbitMQ.RabbitMqMessageRequest,RabbitMQ.Client.IConnection)">
+            <summary>
+                Publishes a message on the exchange
+            </summary>
+            <param name="message"></param>
+            <param name="connection"></param>
+        </member>
+        <member name="T:Grappachu.Interop.RabbitMQ.RabbitMqClientBase">
+            <summary>
+                Defines a basic client for both publisher and consumer
+            </summary>
+        </member>
+        <member name="F:Grappachu.Interop.RabbitMQ.RabbitMqClientBase.Settings">
+            <summary>
+                Gets the settings collection used by for this client
+            </summary>
+        </member>
+        <member name="M:Grappachu.Interop.RabbitMQ.RabbitMqClientBase.#ctor(Grappachu.Interop.RabbitMQ.RabbitMqSettings)">
+            <summary>
+                Acrivates a new instance of <see cref="T:Grappachu.Interop.RabbitMQ.RabbitMqClientBase" />
+            </summary>
+            <param name="settings"></param>
+        </member>
+        <member name="M:Grappachu.Interop.RabbitMQ.RabbitMqClientBase.GetConnectionFactory">
+            <summary>
+                Gets a new connection factory for this client
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Grappachu.Interop.RabbitMQ.RabbitMqMessageRequest">
+            <summary>
+                Defines a wrapper used to send messages through RabbitMQ
+            </summary>
+        </member>
+        <member name="P:Grappachu.Interop.RabbitMQ.RabbitMqMessageRequest.ContentData">
+            <summary>
+                Gets or sets the serialized message to be sent
+            </summary>
+        </member>
+        <member name="P:Grappachu.Interop.RabbitMQ.RabbitMqMessageRequest.ContentType">
+            <summary>
+                Gets or sets the content type to be used when sending this message
+            </summary>
+        </member>
+        <member name="T:Grappachu.Interop.RabbitMQ.RabbitMqSettings">
+            <summary>
+            Define a set of parameters to configure a connection to a RabbitMQ Exchange
+            </summary>
+        </member>
+        <member name="P:Grappachu.Interop.RabbitMQ.RabbitMqSettings.HostName">
+            <summary>
+            Name of server
+            </summary>
+        </member>
+        <member name="P:Grappachu.Interop.RabbitMQ.RabbitMqSettings.Port">
+            <summary>
+            Port to be used. If null the system default will be used
+            </summary>
+        </member>
+        <member name="P:Grappachu.Interop.RabbitMQ.RabbitMqSettings.User">
+            <summary>
+            username to connect the queue
+            </summary>
+        </member>
+        <member name="P:Grappachu.Interop.RabbitMQ.RabbitMqSettings.Password">
+            <summary>
+            password to connect the queue
+            </summary>
+        </member>
+        <member name="P:Grappachu.Interop.RabbitMQ.RabbitMqSettings.ExchangeName">
+            <summary>
+            the name of the Exchange
+            </summary>
+        </member>
+        <member name="P:Grappachu.Interop.RabbitMQ.RabbitMqSettings.QueueName">
+            <summary>
+            the name of the queue
+            </summary>
+        </member>
+        <member name="P:Grappachu.Interop.RabbitMQ.RabbitMqSettings.VirtualHost">
+            <summary>
+            virtual host path
+            </summary>
+        </member>
+        <member name="P:Grappachu.Interop.RabbitMQ.RabbitMqSettings.RoutingKey">
+            <summary>
+            routing key
+            </summary>
+        </member>
+    </members>
+</doc>

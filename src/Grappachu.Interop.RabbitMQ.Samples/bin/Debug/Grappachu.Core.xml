@@ -1,0 +1,2344 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Grappachu.Core</name>
+    </assembly>
+    <members>
+        <member name="T:Grappachu.Core.Preview.Deployment.ApplicationDeployUpdateInfo">
+            <summary>
+                Rappresenta informazioni dettagliate sull'aggiornamento
+            </summary>
+        </member>
+        <member name="M:Grappachu.Core.Preview.Deployment.ApplicationDeployUpdateInfo.#ctor">
+            <summary>
+                Attiva una nuova istanza di <see cref="T:Grappachu.Core.Preview.Deployment.ApplicationDeployUpdateInfo" />
+            </summary>
+        </member>
+        <member name="M:Grappachu.Core.Preview.Deployment.ApplicationDeployUpdateInfo.#ctor(System.Deployment.Application.UpdateCheckInfo)">
+            <summary>
+                Attiva una nuova istanza di <see cref="T:Grappachu.Core.Preview.Deployment.ApplicationDeployUpdateInfo" />
+            </summary>
+        </member>
+        <member name="P:Grappachu.Core.Preview.Deployment.ApplicationDeployUpdateInfo.AvailableVersion">
+            <summary>
+                Ottiene il numero di versione dell'ultima versione non disinstallata
+            </summary>
+        </member>
+        <member name="P:Grappachu.Core.Preview.Deployment.ApplicationDeployUpdateInfo.MinimumRequiredVersion">
+            <summary>
+                Ottiene la versione minima che deve essere installata sul computer dell'utente.
+            </summary>
+        </member>
+        <member name="P:Grappachu.Core.Preview.Deployment.ApplicationDeployUpdateInfo.UpdateSizeBytes">
+            <summary>
+                Ottiene le dimensioni dell'aggiornamento disponibile
+            </summary>
+        </member>
+        <member name="P:Grappachu.Core.Preview.Deployment.ApplicationDeployUpdateInfo.UpdateAvailable">
+            <summary>
+                Ottiene informazioni sulla disponibilità di un aggiornamento non installato.
+            </summary>
+            <returns>
+                true se è disponibile una nuova versione dell'applicazione; in caso contrario, false.
+            </returns>
+        </member>
+        <member name="P:Grappachu.Core.Preview.Deployment.ApplicationDeployUpdateInfo.IsUpdateRequired">
+            <summary>
+                Ottiene un valore che indica se è necessario installare l'aggiornamento.
+            </summary>
+        </member>
+        <member name="T:Grappachu.Core.Preview.Deployment.ApplicationUpdater">
+            <summary>
+                Rappresenta un componente per la verifica e l'aggiornamento di un'applicazione pubblicata con ClickOnce
+            </summary>
+        </member>
+        <member name="E:Grappachu.Core.Preview.Deployment.ApplicationUpdater.Updating">
+            <summary>
+                Richiamato prima dell'inizio dell'aggiornamento
+            </summary>
+        </member>
+        <member name="M:Grappachu.Core.Preview.Deployment.ApplicationUpdater.OnUpdating">
+            <summary>
+                Richiamato prima dell'inizio dell'aggiornamento
+            </summary>
+        </member>
+        <member name="E:Grappachu.Core.Preview.Deployment.ApplicationUpdater.Updated">
+            <summary>
+                Richiamato al termine dell'aggiornamento
+            </summary>
+        </member>
+        <member name="M:Grappachu.Core.Preview.Deployment.ApplicationUpdater.OnUpdated">
+            <summary>
+                Richiamato al termine dell'aggiornamento
+            </summary>
+        </member>
+        <member name="E:Grappachu.Core.Preview.Deployment.ApplicationUpdater.Error">
+            <summary>
+                Richiamato sul verificarsi di un errore quando <see cref="P:Grappachu.Core.Preview.Deployment.ApplicationUpdater.RequireUserInteraction" /> è
+                <value>false</value>
+            </summary>
+        </member>
+        <member name="M:Grappachu.Core.Preview.Deployment.ApplicationUpdater.OnError(System.Exception)">
+            <summary>
+                Richiamato sul verificarsi di un errore
+            </summary>
+            <param name="ex"></param>
+        </member>
+        <member name="P:Grappachu.Core.Preview.Deployment.ApplicationUpdater.ProductName">
+            <summary>
+                Ottiene o imposta il nome del prodotto per cui vengono ricercati gli aggiornamenti
+            </summary>
+        </member>
+        <member name="P:Grappachu.Core.Preview.Deployment.ApplicationUpdater.RequireUserInteraction">
+            <summary>
+                Ottiene o imposta un valore che indica se aggiornare l'applicazione con l'intervento di un utente oppure in
+                modalità automatica.
+            </summary>
+        </member>
+        <member name="P:Grappachu.Core.Preview.Deployment.ApplicationUpdater.RestartAfterUpdate">
+            <summary>
+                Ottiene o imposta un valore che indica se l'applicazione può essere riavviata al termine di una operazione di
+                aggiornamento
+            </summary>
+        </member>
+        <member name="P:Grappachu.Core.Preview.Deployment.ApplicationUpdater.LastChecked">
+            <summary>
+                Ottiene un valore che indica la data dell'ultima verifica degli aggiornamenti andata a buon fine
+            </summary>
+        </member>
+        <member name="M:Grappachu.Core.Preview.Deployment.ApplicationUpdater.#ctor">
+            <summary>
+                Attiva una nuova istanza di ApplicationUpdater
+            </summary>
+        </member>
+        <member name="M:Grappachu.Core.Preview.Deployment.ApplicationUpdater.#ctor(Grappachu.Core.Preview.UI.IDialogHolder)">
+            <summary>
+                Attiva una nuova istanza di ApplicationUpdater
+            </summary>
+        </member>
+        <member name="M:Grappachu.Core.Preview.Deployment.ApplicationUpdater.#ctor(Grappachu.Core.Preview.Deployment.IApplicationDeployment,Grappachu.Core.Preview.Environment.IApplicationHelper,Grappachu.Core.Preview.UI.IDialogHolder)">
+            <summary>
+                Attiva una nuova istanza di ApplicationUpdater
+            </summary>
+        </member>
+        <member name="M:Grappachu.Core.Preview.Deployment.ApplicationUpdater.Update">
+            <summary>
+                Verifica ed aggiorna l'applicazione corrente
+            </summary>
+        </member>
+        <member name="M:Grappachu.Core.Preview.Deployment.ApplicationUpdater.OnCheckUpdates(Grappachu.Core.Preview.Deployment.IApplicationDeployment)">
+            <summary>
+                Verifica la disponibilità di nuovi aggiornamenti per l'applicazione corrente
+            </summary>
+        </member>
+        <member name="M:Grappachu.Core.Preview.Deployment.ApplicationUpdater.CreateDeploymentShortcut(System.IO.DirectoryInfo,System.String)">
+            <summary>
+                Crea un collegamento con il riferimento al deployment dell'applicazione (appref-ms).
+            </summary>
+            <remarks>
+                Il collegamento creato con questo metodo riferisce al prodotto installato
+                pertanto non viene alterato a seguito di un aggiornamento da parte di ClickOnce.
+            </remarks>
+            <param name="path"></param>
+            <param name="caption"></param>
+        </member>
+        <member name="T:Grappachu.Core.Preview.Deployment.IApplicationDeployment">
+            <summary>
+                Rappresenta un componente per il controllo del deploy di una applicatione
+            </summary>
+        </member>
+        <member name="P:Grappachu.Core.Preview.Deployment.IApplicationDeployment.IsNetworkDeployed">
+            <summary>
+                Ottiene un valore che indica che l'applicazione è deployata con il sistema di deploy gestito da questa interfaccia.
+            </summary>
+        </member>
+        <member name="P:Grappachu.Core.Preview.Deployment.IApplicationDeployment.ActivationUri">
+            <summary>
+                Ottiene l'Url utilizzato per avviare il manifesto di distribuzione dell'applicazione
+            </summary>
+        </member>
+        <member name="P:Grappachu.Core.Preview.Deployment.IApplicationDeployment.UpdateLocation">
+            <summary>
+                Ottiene la condivisione file o il sito web utilizzato per l'aggiornamento automatica da perte dell'applicazione
+            </summary>
+        </member>
+        <member name="P:Grappachu.Core.Preview.Deployment.IApplicationDeployment.IsFirstRun">
+            <summary>
+                Ottiene un valore che indica se si tratta della prima volta che l'applicazione è stata eseguita sul computer client
+            </summary>
+        </member>
+        <member name="M:Grappachu.Core.Preview.Deployment.IApplicationDeployment.Update">
+            <summary>
+                Avvia in modo sincrono il download e l'installazione dell'ultima versione dell'applicazione corrente.
+            </summary>
+        </member>
+        <member name="M:Grappachu.Core.Preview.Deployment.IApplicationDeployment.CheckForDetailedUpdate">
+            <summary>
+                Ottiene informazioni dettagliate sull'aggiornamento
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Grappachu.Core.Preview.Deployment.IApplicationDeployment.GetDeploymentInfo">
+            <summary>
+                Ottiene informazioni sull'applicazione nel dominio corrente
+            </summary>
+        </member>
+        <member name="T:Grappachu.Core.Preview.Environment.ApplicationHelper">
+            <summary>
+                Rappresenta un gestore per l'applicazione corrente
+            </summary>
+        </member>
+        <member name="M:Grappachu.Core.Preview.Environment.ApplicationHelper.Restart">
+            <summary>
+                Riavvia l'applicazione corrente
+            </summary>
+            <remarks>
+                Il riavvio dell'applicazione potrebbe non funzionare nei seguenti casi:
+                L'evento Closing potrebbe impedire lo shutdown dell'applicazione.
+                Se l'applicazione è single Instance
+            </remarks>
+        </member>
+        <member name="M:Grappachu.Core.Preview.Environment.ApplicationHelper.GetProductName">
+            <summary>
+                Ottiene il nome del prodotto corrente
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Grappachu.Core.Preview.Environment.ApplicationHelper.GetProductVersion">
+            <summary>
+                Ottiene la versione dell'applicazione corrente.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Grappachu.Core.Preview.Environment.ApplicationHelper.GetCompanyName">
+            <summary>
+                Ottiene il nome del società dell'applicazione corrente
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Grappachu.Core.Preview.Environment.IApplicationHelper">
+            <summary>
+            Rappresenta un gestore per un'applicazione
+            </summary>
+        </member>
+        <member name="M:Grappachu.Core.Preview.Environment.IApplicationHelper.Restart">
+            <summary>
+            Chiude l'applicazione e avvia immediatamente una nuova istanza.
+            </summary> 
+        </member>
+        <member name="T:Grappachu.Core.Preview.Environment.Keyboard.KeyboardListener">
+             <summary>
+             Listens keyboard globally. 
+             <remarks>Uses WH_KEYBOARD_LL.</remarks>
+             </summary>
+             <example>
+             public partial class App : Application
+             {
+                KeyboardListener KListener = new KeyboardListener();
+            
+                private void Application_Startup(object sender, StartupEventArgs e)
+                {
+                    KListener.KeyDown += new RawKeyEventHandler(KListener_KeyDown);
+                }
+            
+                void KListener_KeyDown(object sender, RawKeyEventArgs args)
+                {
+                    Console.WriteLine(args.Key.ToString());
+                }
+            
+                private void Application_Exit(object sender, ExitEventArgs e)
+                {
+                    KListener.Dispose();
+                }
+             }
+             </example>
+        </member>
+        <member name="M:Grappachu.Core.Preview.Environment.Keyboard.KeyboardListener.#ctor">
+            <summary>
+            Creates global keyboard listener.
+            </summary>
+        </member>
+        <member name="M:Grappachu.Core.Preview.Environment.Keyboard.KeyboardListener.Finalize">
+            <summary>
+            Destroys global keyboard listener.
+            </summary>
+        </member>
+        <member name="E:Grappachu.Core.Preview.Environment.Keyboard.KeyboardListener.KeyDown">
+            <summary>
+            Fired when any of the keys is pressed down.
+            </summary>
+        </member>
+        <member name="E:Grappachu.Core.Preview.Environment.Keyboard.KeyboardListener.KeyUp">
+            <summary>
+            Fired when any of the keys is released.
+            </summary>
+        </member>
+        <member name="F:Grappachu.Core.Preview.Environment.Keyboard.KeyboardListener._hookId">
+            <summary>
+            Hook ID
+            </summary>
+        </member>
+        <member name="T:Grappachu.Core.Preview.Environment.Keyboard.KeyboardListener.KeyboardCallbackAsync">
+            <summary>
+            Asynchronous callback hook.
+            </summary>
+        </member>
+        <member name="M:Grappachu.Core.Preview.Environment.Keyboard.KeyboardListener.LowLevelKeyboardProc(System.Int32,System.UIntPtr,System.IntPtr)">
+            <summary>
+            Actual callback hook.
+            
+            <remarks>Calls asynchronously the asyncCallback.</remarks>
+            </summary>
+            <param name="nCode"></param>
+            <param name="wParam"></param>
+            <param name="lParam"></param>
+            <returns></returns>
+        </member>
+        <member name="F:Grappachu.Core.Preview.Environment.Keyboard.KeyboardListener._hookedKeyboardCallbackAsync">
+            <summary>
+            Event to be invoked asynchronously (BeginInvoke) each time key is pressed.
+            </summary>
+        </member>
+        <member name="M:Grappachu.Core.Preview.Environment.Keyboard.KeyboardListener.KeyboardListener_KeyboardCallbackAsync(Grappachu.Core.Preview.Environment.Keyboard.InterceptKeys.KeyEvent,System.Int32)">
+            <summary>
+            HookCallbackAsync procedure that calls accordingly the KeyDown or KeyUp events.
+            </summary>
+            <param name="keyEvent">Keyboard event</param>
+            <param name="vkCode">VKCode</param>
+        </member>
+        <member name="M:Grappachu.Core.Preview.Environment.Keyboard.KeyboardListener.Dispose">
+            <summary>
+            Disposes the hook.
+            <remarks>This call is required as it calls the UnhookWindowsHookEx.</remarks>
+            </summary>
+        </member>
+        <member name="M:Grappachu.Core.Preview.Environment.Keyboard.KeyboardListener.Dispose(System.Boolean)">
+            <summary>
+             The bulk of the clean-up code is implemented in Dispose(bool)
+            </summary>
+            <param name="disposing"></param>
+        </member>
+        <member name="T:Grappachu.Core.Preview.Environment.Keyboard.RawKeyEventArgs">
+            <summary>
+            Raw KeyEvent arguments.
+            </summary>
+        </member>
+        <member name="F:Grappachu.Core.Preview.Environment.Keyboard.RawKeyEventArgs.VkCode">
+            <summary>
+            VKCode of the key.
+            </summary>
+        </member>
+        <member name="F:Grappachu.Core.Preview.Environment.Keyboard.RawKeyEventArgs.Key">
+            <summary>
+            WPF Key of the key.
+            </summary>
+        </member>
+        <member name="F:Grappachu.Core.Preview.Environment.Keyboard.RawKeyEventArgs.IsSysKey">
+            <summary>
+            Is the hitted key system key.
+            </summary>
+        </member>
+        <member name="M:Grappachu.Core.Preview.Environment.Keyboard.RawKeyEventArgs.#ctor(System.Int32,System.Boolean)">
+            <summary>
+            Create raw keyevent arguments.
+            </summary>
+            <param name="vkCode"></param>
+            <param name="isSysKey"></param>
+        </member>
+        <member name="T:Grappachu.Core.Preview.Environment.Keyboard.RawKeyEventHandler">
+            <summary>
+            Raw keyevent handler.
+            </summary>
+            <param name="sender">sender</param>
+            <param name="e">raw keyevent arguments</param>
+        </member>
+        <member name="T:Grappachu.Core.Preview.Environment.Keyboard.InterceptKeys">
+            <summary>
+            Winapi Key interception helper class.
+            </summary>
+        </member>
+        <member name="T:Grappachu.Core.Preview.Environment.Keyboard.OnScreenKeyboard">
+            <summary>
+                Gestore per la tastiera virtuale
+            </summary>
+        </member>
+        <member name="P:Grappachu.Core.Preview.Environment.Keyboard.OnScreenKeyboard.IsVisible">
+            <summary>
+                Ottiene un valore che indica se la tastiera su schermo è al momento visualizzata
+            </summary>
+        </member>
+        <member name="M:Grappachu.Core.Preview.Environment.Keyboard.OnScreenKeyboard.Show">
+            <summary>
+                Visualizza la tastiera su schermo se non visibile
+            </summary>
+        </member>
+        <member name="M:Grappachu.Core.Preview.Environment.Keyboard.OnScreenKeyboard.Hide">
+            <summary>
+                Nasconde la tastiera su schermo se non visibile
+            </summary>
+        </member>
+        <member name="T:Grappachu.Core.Preview.Environment.Keyboard.ShowWindowCommands">
+            <summary>
+                Definisce i possibili comandi su una finestra
+            </summary>
+        </member>
+        <member name="F:Grappachu.Core.Preview.Environment.Keyboard.ShowWindowCommands.Hide">
+            <summary>
+                Hides the window and activates another window.
+            </summary>
+        </member>
+        <member name="F:Grappachu.Core.Preview.Environment.Keyboard.ShowWindowCommands.Normal">
+            <summary>
+                Activates and displays a window. If the window is minimized or
+                maximized, the system restores it to its original size and position.
+                An application should specify this flag when displaying the window
+                for the first time.
+            </summary>
+        </member>
+        <member name="F:Grappachu.Core.Preview.Environment.Keyboard.ShowWindowCommands.ShowMinimized">
+            <summary>
+                Activates the window and displays it as a minimized window.
+            </summary>
+        </member>
+        <member name="F:Grappachu.Core.Preview.Environment.Keyboard.ShowWindowCommands.Maximize">
+            <summary>
+                Maximizes the specified window.
+            </summary>
+        </member>
+        <member name="F:Grappachu.Core.Preview.Environment.Keyboard.ShowWindowCommands.ShowMaximized">
+            <summary>
+                Activates the window and displays it as a maximized window.
+            </summary>
+        </member>
+        <member name="F:Grappachu.Core.Preview.Environment.Keyboard.ShowWindowCommands.ShowNoActivate">
+            <summary>
+                Displays a window in its most recent size and position. This value
+                is similar to Win32.ShowWindowCommand.Normal, except
+                the window is not activated.
+            </summary>
+        </member>
+        <member name="F:Grappachu.Core.Preview.Environment.Keyboard.ShowWindowCommands.Show">
+            <summary>
+                Activates the window and displays it in its current size and position.
+            </summary>
+        </member>
+        <member name="F:Grappachu.Core.Preview.Environment.Keyboard.ShowWindowCommands.Minimize">
+            <summary>
+                Minimizes the specified window and activates the next top-level
+                window in the Z order.
+            </summary>
+        </member>
+        <member name="F:Grappachu.Core.Preview.Environment.Keyboard.ShowWindowCommands.ShowMinNoActive">
+            <summary>
+                Displays the window as a minimized window. This value is similar to
+                Win32.ShowWindowCommand.ShowMinimized, except the
+                window is not activated.
+            </summary>
+        </member>
+        <member name="F:Grappachu.Core.Preview.Environment.Keyboard.ShowWindowCommands.ShowNA">
+            <summary>
+                Displays the window in its current size and position. This value is
+                similar to Win32.ShowWindowCommand.Show , except the
+                window is not activated.
+            </summary>
+        </member>
+        <member name="F:Grappachu.Core.Preview.Environment.Keyboard.ShowWindowCommands.Restore">
+            <summary>
+                Activates and displays the window. If the window is minimized or
+                maximized, the system restores it to its original size and position.
+                An application should specify this flag when restoring a minimized window.
+            </summary>
+        </member>
+        <member name="F:Grappachu.Core.Preview.Environment.Keyboard.ShowWindowCommands.ShowDefault">
+            <summary>
+                Sets the show state based on the SW_* value specified in the
+                STARTUPINFO structure passed to the CreateProcess function by the
+                program that started the application.
+            </summary>
+        </member>
+        <member name="F:Grappachu.Core.Preview.Environment.Keyboard.ShowWindowCommands.ForceMinimize">
+            <summary>
+                <b>Windows 2000/XP:</b> Minimizes a window, even if the thread
+                that owns the window is not responding. This flag should only be
+                used when minimizing windows from a different thread.
+            </summary>
+        </member>
+        <member name="T:Grappachu.Core.Preview.IO.FileEnumerator">
+            <summary>
+                Enumeratore di file da percorsi multipli
+            </summary>
+        </member>
+        <member name="P:Grappachu.Core.Preview.IO.FileEnumerator.Paths">
+            <summary>
+                Ottiene l'elenco dei percorsi da esplorare
+            </summary>
+        </member>
+        <member name="M:Grappachu.Core.Preview.IO.FileEnumerator.#ctor">
+            <summary>
+                Crea una nuova istanza di FileEnumerator
+            </summary>
+        </member>
+        <member name="M:Grappachu.Core.Preview.IO.FileEnumerator.#ctor(System.Collections.Generic.ICollection{Grappachu.Core.Preview.IO.PathSearchInfo})">
+            <summary>
+                Crea una nuova istanza di FileEnumerator
+            </summary>
+            <param name="paths"></param>
+        </member>
+        <member name="M:Grappachu.Core.Preview.IO.FileEnumerator.GetEnumerator">
+            <summary>
+                Restituisce un enumeratore che consente di scorrere l'insieme.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Grappachu.Core.Preview.IO.FileEnumerator.System#Collections#IEnumerable#GetEnumerator">
+            <summary>
+                Restituisce l'enumeratore che scorre l'insieme.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Grappachu.Core.Preview.IO.IFileIndex">
+            <summary>
+                Rappresenta un componente per l'indicizzazione dei file basato su una chiave
+            </summary>
+        </member>
+        <member name="P:Grappachu.Core.Preview.IO.IFileIndex.ItemsCount">
+            <summary>
+                Ottiene il numero di elementi presenti nell'indice
+            </summary>
+        </member>
+        <member name="M:Grappachu.Core.Preview.IO.IFileIndex.GetFiles(System.String)">
+            <summary>
+                Ottiene tutti i file disponibili che rispondono alla chiava specificata
+            </summary>
+            <param name="key"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Grappachu.Core.Preview.IO.FileIndex">
+            <summary>
+                Rappresenta un componente per l'indicizzazione dei file basato su una chiave
+            </summary>
+        </member>
+        <member name="M:Grappachu.Core.Preview.IO.FileIndex.#ctor(Grappachu.Core.Preview.IO.IKeyGenerator{System.String,System.String},Grappachu.Core.Preview.IO.IFileEnumerator)">
+            <summary>
+            Inizializza una nuova istanza di <see cref="T:Grappachu.Core.Preview.IO.FileIndex"/>
+            </summary>
+            <param name="keyGenerator">Generatore di chiave per i file</param>
+            <param name="enumerator">Enumeratore per i file da indicizzare</param>
+        </member>
+        <member name="P:Grappachu.Core.Preview.IO.FileIndex.ItemsCount">
+            <summary>
+                Ottiene il numero di elementi presenti nell'indice
+            </summary>
+        </member>
+        <member name="M:Grappachu.Core.Preview.IO.FileIndex.OnDoWork(System.ComponentModel.DoWorkEventArgs)">
+            <summary>
+            Genera l'evento <see cref="E:System.ComponentModel.BackgroundWorker.DoWork"/>. 
+            </summary>
+            <param name="e">Oggetto <see cref="T:System.EventArgs"/> contenente i dati dell'evento.</param>
+        </member>
+        <member name="M:Grappachu.Core.Preview.IO.FileIndex.GetFiles(System.String)">
+            <summary>
+                Ottiene tutti i file disponibili che rispondono alla chiava specificata
+            </summary>
+            <param name="key"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Grappachu.Core.Preview.IO.FileIndex.FileKeyWrapper.GetHashCode">
+            <summary>
+            Funge da funzione hash per un determinato tipo. 
+            </summary>
+            <returns>
+            Codice hash per la classe <see cref="T:System.Object"/> corrente.
+            </returns>
+            <filterpriority>2</filterpriority>
+        </member>
+        <member name="M:Grappachu.Core.Preview.IO.FileIndex.FileKeyWrapper.Equals(System.Object)">
+            <summary>
+            Consente di determinare se l'oggetto <see cref="T:System.Object"/> specificato è uguale all'oggetto <see cref="T:System.Object"/> corrente.
+            </summary>
+            <returns>
+            true se l'oggetto <see cref="T:System.Object"/> specificato è uguale all'oggetto <see cref="T:System.Object"/> corrente; in caso contrario, false.
+            </returns>
+            <param name="obj">Oggetto <see cref="T:System.Object"/> da confrontare con l'oggetto <see cref="T:System.Object"/> corrente. 
+                            </param><exception cref="T:System.NullReferenceException">Il parametro <paramref name="obj"/> è null.
+                            </exception><filterpriority>2</filterpriority>
+        </member>
+        <member name="T:Grappachu.Core.Preview.IO.FileManager">
+            <summary>
+            Fornisce i metodi statici per la gestione di file e directory
+            </summary>
+        </member>
+        <member name="M:Grappachu.Core.Preview.IO.FileManager.SafeDelete(System.String)">
+            <summary>
+            Elimina un file su disco, se presente.
+            </summary>
+        </member>
+        <member name="M:Grappachu.Core.Preview.IO.FileManager.GetSize(System.String)">
+            <summary>
+            Ottiene la dimensione in byte di un file, 0 se non esiste.
+            </summary>
+        </member>
+        <member name="M:Grappachu.Core.Preview.IO.FileManager.SaveToFile(System.Object,System.String,Grappachu.Core.Preview.Runtime.Serialization.IRuntimeSerializer)">
+            <summary>
+            Salva un oggetto su un file
+            </summary>
+            <param name="objectToSave"></param>
+            <param name="filename"></param>
+            <param name="serializer"></param>  
+        </member>
+        <member name="M:Grappachu.Core.Preview.IO.FileManager.ReadFromFile``1(System.String,Grappachu.Core.Preview.Runtime.Serialization.IRuntimeSerializer)">
+            <summary>
+            Ripristina un oggetto serializzato da un file
+            </summary>
+            <param name="filename"></param>
+            <param name="serializer"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Grappachu.Core.Preview.IO.FileManager.VerifyHash(System.String,System.String,Grappachu.Core.Security.Hashing.IHashProvider,System.Boolean)">
+            <summary>
+            Verifica lo stato di un file su disco.
+            </summary>
+            <param name="filename">Percorso del file da verificare</param>
+            <param name="hash">Hash atteso per questo file</param>
+            <param name="provider">Specifica l'algoritmo di hashing da utilizzare</param>
+            <param name="usePersistentFile">Legge, crea o aggiorna un file di testo con l'hash calcolato per il file. 
+            Può rendere piu veloci i controlli ripetuti.</param>
+            <returns></returns> 
+        </member>
+        <member name="M:Grappachu.Core.Preview.IO.FileManager.CleanHash(System.String,Grappachu.Core.Security.Hashing.IHashProvider)">
+            <summary>
+            Rimuove un file di hash relativo ad un file
+            </summary>
+            <param name="filename"></param>
+            <param name="provider"></param>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="T:Grappachu.Core.Preview.IO.FileStatus">
+            <summary>
+            Rappresenta lo stato di un file 
+            </summary>
+        </member>
+        <member name="F:Grappachu.Core.Preview.IO.FileStatus.Unknown">
+            <summary>
+            Sconosciuto. Non è possibile verificare il file. Può essere dovuto a problemi di accesso alla risorsa.
+            </summary>
+        </member>
+        <member name="F:Grappachu.Core.Preview.IO.FileStatus.Missing">
+            <summary>
+            Il file non è presente nel percorso specificato
+            </summary>
+        </member>
+        <member name="F:Grappachu.Core.Preview.IO.FileStatus.Corrupted">
+            <summary>
+            Il file è presente ma i dati non sono conformi all'hash specificato. Può essere causato da un download interrotto o da un errore di ricezione.
+            </summary>
+        </member>
+        <member name="F:Grappachu.Core.Preview.IO.FileStatus.Present">
+            <summary>
+            Il file è presente e il contenuto è coerente con l'hash passato.
+            </summary>
+        </member>
+        <member name="T:Grappachu.Core.Preview.IO.IFileEnumerator">
+            <summary>
+            Rappresenta un enumeratore di file
+            </summary>
+        </member>
+        <member name="T:Grappachu.Core.Preview.IO.PathSearchInfo">
+            <summary>
+            Rappresenta un percorso di ricerca per l'enumerazione di file.
+            </summary>
+        </member>
+        <member name="P:Grappachu.Core.Preview.IO.PathSearchInfo.Path">
+            <summary>
+            Ottiene o imposta la radice del percorso da cui enumerare i file
+            </summary>
+        </member>
+        <member name="P:Grappachu.Core.Preview.IO.PathSearchInfo.Options">
+            <summary>
+            Ottiene le impostazioni per l'enumerazione dei file
+            </summary>
+        </member>
+        <member name="M:Grappachu.Core.Preview.IO.PathSearchInfo.#ctor(System.String)">
+            <summary>
+            Inizializza una nuova istanza di <see cref="T:Grappachu.Core.Preview.IO.PathSearchInfo"/> 
+            </summary>
+            <param name="rootPath">Percorso radice della ricerca</param>
+        </member>
+        <member name="M:Grappachu.Core.Preview.IO.PathSearchInfo.#ctor(System.String,System.IO.SearchOption)">
+            <summary>
+            Inizializza una nuova istanza di <see cref="T:Grappachu.Core.Preview.IO.PathSearchInfo"/> 
+            </summary>
+            <param name="rootPath">Percorso radice della ricerca</param>
+            <param name="searchOption"></param> 
+        </member>
+        <member name="M:Grappachu.Core.Preview.IO.PathSearchInfo.#ctor(System.String,System.String,System.IO.SearchOption)">
+            <summary>
+            Inizializza una nuova istanza di <see cref="T:Grappachu.Core.Preview.IO.PathSearchInfo"/> 
+            </summary>
+            <param name="rootPath">Percorso radice della ricerca</param>
+            <param name="filter"></param>
+            <param name="searchOption"></param>
+        </member>
+        <member name="T:Grappachu.Core.Preview.IO.PathSearchOptions">
+            <summary>
+            Rappresenta un insieme di opzioni per l'enumerazione dei file all'interno di un percorso
+            </summary>
+        </member>
+        <member name="P:Grappachu.Core.Preview.IO.PathSearchOptions.Filter">
+            <summary>
+            Ottiene o imposta un filtro per i file da elencare.
+            Default: *.*
+            </summary>
+        </member>
+        <member name="P:Grappachu.Core.Preview.IO.PathSearchOptions.SearchOption">
+            <summary>
+            Specifica la profondità della ricerca
+            </summary>
+        </member>
+        <member name="M:Grappachu.Core.Preview.IO.PathSearchOptions.#ctor">
+            <summary>
+            Inizializza una nuova istanza di <see cref="T:Grappachu.Core.Preview.IO.PathSearchOptions"/>
+            </summary>
+        </member>
+        <member name="M:Grappachu.Core.Preview.IO.PathSearchOptions.#ctor(System.String,System.IO.SearchOption)">
+            <summary>
+            Inizializza una nuova istanza di <see cref="T:Grappachu.Core.Preview.IO.PathSearchOptions"/>
+            </summary>
+            <param name="pattern"></param>
+            <param name="searchOption"></param>
+        </member>
+        <member name="T:Grappachu.Core.Preview.IO.FilesystemTools">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Grappachu.Core.Preview.IO.FilesystemTools.IsDirectory(System.String)">
+            <summary>
+                True if path is a directory
+            </summary>
+        </member>
+        <member name="M:Grappachu.Core.Preview.IO.FilesystemTools.IsReadonly(System.String,System.Boolean)">
+            <summary>
+                True if a filesystem entry has the readonly attribute
+                or, if directory and recursive, contains a readonly entry
+            </summary>
+        </member>
+        <member name="M:Grappachu.Core.Preview.IO.FilesystemTools.Exists(System.String)">
+            <summary>
+                True if a filesystem entry exists (file or directory)
+            </summary>
+        </member>
+        <member name="M:Grappachu.Core.Preview.IO.FilesystemTools.RemoveReadonly(System.String,System.Boolean)">
+            <summary>
+                Removes the readonly attribute from a file system entry
+            </summary>
+            <param name="targetPath"></param>
+            <param name="recursive">
+                If target is a directory removes the attribute from whole
+                filesystem entries in the subtree
+            </param>
+        </member>
+        <member name="M:Grappachu.Core.Preview.IO.FilesystemTools.SafeDelete(System.String,System.Boolean,System.Boolean)">
+            <summary>
+                Deletes a filesystem entry (file or directory) if exists
+            </summary>
+            <param name="path"></param>
+            <param name="recursive">If target is a directory deletes the whole subtree</param>
+            <param name="ignoreReadonly">Force deletion of readonly entries</param>
+        </member>
+        <member name="M:Grappachu.Core.Preview.IO.FilesystemTools.ClonePath(System.String,System.String)">
+            <summary>
+                Clones a file or a directory tree to a new path.
+                All files in the target will be erased.
+            </summary>
+        </member>
+        <member name="M:Grappachu.Core.Preview.IO.FilesystemTools.Rename(System.String,System.String)">
+            <summary>
+                Renames a file or a directory
+            </summary>
+        </member>
+        <member name="M:Grappachu.Core.Preview.IO.FilesystemTools.SafeCreateDirectory(System.String)">
+            <summary>
+                Creates a directory if not exists
+            </summary>
+        </member>
+        <member name="T:Grappachu.Core.Preview.IO.TempFile">
+            <summary>
+                Represent a temporary file
+            </summary>
+        </member>
+        <member name="M:Grappachu.Core.Preview.IO.TempFile.#ctor">
+            <summary>
+                Generates a new Temporary file reference in the temp folder
+            </summary>
+        </member>
+        <member name="M:Grappachu.Core.Preview.IO.TempFile.#ctor(System.String)">
+            <summary>
+                Generates a new Temporary file reference in the temp folder whith the specified extension
+            </summary>
+        </member>
+        <member name="M:Grappachu.Core.Preview.IO.TempFile.#ctor(System.String,System.String)">
+            <summary>
+                Generates a new Temporary file reference in the provided folder using the specified extension
+            </summary>
+        </member>
+        <member name="P:Grappachu.Core.Preview.IO.TempFile.Path">
+            <summary>
+                Obtains the name of the temporary file to use
+            </summary>
+        </member>
+        <member name="M:Grappachu.Core.Preview.IO.TempFile.Dispose">
+            <summary>Esegue attività definite dall'applicazione, come rilasciare o reimpostare risorse non gestite.</summary>
+            <filterpriority>2</filterpriority>
+        </member>
+        <member name="M:Grappachu.Core.Preview.IO.TempFile.Create">
+            <summary>
+                Writes the empty file on disk
+            </summary>
+        </member>
+        <member name="T:Grappachu.Core.Preview.IO.IKeyGenerator`2">
+            <summary>
+                Defines a generic component for generating hash keys from objects.
+            </summary>
+        </member>
+        <member name="M:Grappachu.Core.Preview.IO.IKeyGenerator`2.GenerateKey(`0)">
+            <summary>
+                Genera una chiave unica per l'oggetto
+            </summary>
+            <param name="obj"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Grappachu.Core.Preview.Util.Mime">
+            <summary>
+            Definisce dei metodi di utilità per la manipolazione dei tipi Mime
+            </summary>
+        </member>
+        <member name="M:Grappachu.Core.Preview.Util.Mime.OnAddTypes">
+            <summary>
+            Aggiunge tutte le voci al dizionario
+            </summary>
+            <remarks>
+            Riferimento: http://www.w3schools.com/media/media_mimeref.asp
+            Tipi aggiunti: flv, xml
+            Aggiornato al 23 Dec 2009
+            </remarks>
+        </member>
+        <member name="M:Grappachu.Core.Preview.Util.Mime.GetByFileExtension(System.String)">
+            <summary>
+            Ottiene il tipo mime associato a un estensione di file.
+            </summary>
+            <param name="extension"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Grappachu.Core.Preview.Net.Http.HttpClient">
+            <summary>
+                Rappresenta un client per richieste basate su protocollo Http
+            </summary>
+        </member>
+        <member name="M:Grappachu.Core.Preview.Net.Http.HttpClient.#ctor">
+            <summary>
+                Inizializza una nuova istanza della classe WebRequestClient
+            </summary>
+        </member>
+        <member name="P:Grappachu.Core.Preview.Net.Http.HttpClient.DefaultTimeout">
+            <summary>
+                Ottiene o imposta un timeout predefinito per tutte le richieste.
+            </summary>
+        </member>
+        <member name="M:Grappachu.Core.Preview.Net.Http.HttpClient.Post(System.Uri,Grappachu.Core.Preview.Net.Http.HttpPostMessage,System.Collections.Generic.IDictionary{System.String,System.String},System.Net.NetworkCredential,System.Int32)">
+            <summary>
+                Esegue una WebRequest in POST e restituisce il risultato.
+            </summary>
+            <param name="url">Url della richiesta</param>
+            <param name="postData"></param>
+            <param name="headers"></param>
+            <param name="credentials">Imposta delle credenziali di rete per l'autenticazione</param>
+            <param name="timeoutMills">
+                Imposta un timeout per la richiesta. Se non viene specificato (=0) sarà applicato il
+                <see cref="P:Grappachu.Core.Preview.Net.Http.HttpClient.DefaultTimeout" />
+            </param>
+            <returns></returns>
+        </member>
+        <member name="M:Grappachu.Core.Preview.Net.Http.HttpClient.Get(System.Uri,System.Collections.Generic.IDictionary{System.String,System.String},System.Net.NetworkCredential,System.Int32)">
+            <summary>
+                Esegue una WebRequest in GET e restituisce il risultato.
+            </summary>
+            <param name="url">Url della richiesta</param>
+            <param name="headers"></param>
+            <param name="credentials">Imposta delle credenziali di rete per l'autenticazione</param>
+            <param name="timeoutMills">
+                Imposta un timeout per la richiesta. Se non viene specificato (=0) sarà applicato il
+                <see cref="P:Grappachu.Core.Preview.Net.Http.HttpClient.DefaultTimeout" />
+            </param>
+            <returns></returns>
+        </member>
+        <member name="T:Grappachu.Core.Preview.Net.Http.HttpPostMessage">
+            <summary>
+                Rappresenta un messagio in post
+            </summary>
+        </member>
+        <member name="M:Grappachu.Core.Preview.Net.Http.HttpPostMessage.#ctor(Grappachu.Core.Preview.Net.Http.HttpPostMethod,System.String)">
+            <summary>
+                Crea una nuova istanza di HttpPostMessage
+            </summary>
+            <param name="contentType"></param>
+            <param name="messageData"></param>
+        </member>
+        <member name="P:Grappachu.Core.Preview.Net.Http.HttpPostMessage.ContentType">
+            <summary>
+                Ottiene il tipo di messaggio
+            </summary>
+        </member>
+        <member name="P:Grappachu.Core.Preview.Net.Http.HttpPostMessage.MessageData">
+            <summary>
+                Ottiene i dati del messaggio
+            </summary>
+        </member>
+        <member name="T:Grappachu.Core.Preview.Net.Http.HttpPostMethod">
+            <summary>
+                Rappresenta
+            </summary>
+        </member>
+        <member name="F:Grappachu.Core.Preview.Net.Http.HttpPostMethod.FormUrlEncoded">
+            <summary>
+            </summary>
+        </member>
+        <member name="F:Grappachu.Core.Preview.Net.Http.HttpPostMethod.MultipartFormData">
+            <summary>
+            </summary>
+        </member>
+        <member name="T:Grappachu.Core.Preview.Net.Http.HttpPostMethodExtension">
+            <summary>
+                Rappresenta un estensione di funzionalità per <see cref="T:Grappachu.Core.Preview.Net.Http.HttpPostMethod" />
+            </summary>
+        </member>
+        <member name="M:Grappachu.Core.Preview.Net.Http.HttpPostMethodExtension.ToStringValue(Grappachu.Core.Preview.Net.Http.HttpPostMethod)">
+            <summary>
+                Restituisce il valore di HttpContentType
+            </summary>
+            <param name="type"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Grappachu.Core.Preview.Net.Http.IHttpClient">
+            <summary>
+                Rappresenta un client per richieste basate su protocollo Http
+            </summary>
+        </member>
+        <member name="M:Grappachu.Core.Preview.Net.Http.IHttpClient.Post(System.Uri,Grappachu.Core.Preview.Net.Http.HttpPostMessage,System.Collections.Generic.IDictionary{System.String,System.String},System.Net.NetworkCredential,System.Int32)">
+            <summary>
+                Esegue una WebRequest in POST e restituisce il risultato.
+            </summary>
+            <param name="url">Url della richiesta</param>
+            <param name="postData"></param>
+            <param name="headers"></param>
+            <param name="credentials">Imposta delle credenziali di rete per l'autenticazione</param>
+            <param name="timeoutMills">Imposta un timeout per la richiesta.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Grappachu.Core.Preview.Net.Http.IHttpClient.Get(System.Uri,System.Collections.Generic.IDictionary{System.String,System.String},System.Net.NetworkCredential,System.Int32)">
+            <summary>
+                Esegue una WebRequest in GET e restituisce il risultato.
+            </summary>
+            <param name="url">Url della richiesta</param>
+            <param name="headers"></param>
+            <param name="credentials">Imposta delle credenziali di rete per l'autenticazione</param>
+            <param name="timeoutMills">Imposta un timeout per la richiesta.</param>
+            <returns></returns>
+        </member>
+        <member name="T:Grappachu.Core.Preview.Net.Tcp.IncomingMessageArgs">
+            <summary>
+                Rappresenta i dati di un messaggio ricevuto
+            </summary>
+        </member>
+        <member name="M:Grappachu.Core.Preview.Net.Tcp.IncomingMessageArgs.#ctor(System.String,System.Net.IPAddress)">
+            <summary>
+                Inzializza una nuova istanza di IncomingMessageArgs
+            </summary>
+        </member>
+        <member name="P:Grappachu.Core.Preview.Net.Tcp.IncomingMessageArgs.SenderAddress">
+            <summary>
+                Ottiene l'indirizzo Ip del client remoto
+            </summary>
+        </member>
+        <member name="T:Grappachu.Core.Preview.Net.Tcp.ISocketListener">
+            <summary>
+                Definisce un componente in grado di ricevere messaggi su un Socket.
+            </summary>
+        </member>
+        <member name="P:Grappachu.Core.Preview.Net.Tcp.ISocketListener.Port">
+            <summary>
+                Ottiene o imposta una porta per l'ascolto.
+            </summary>
+        </member>
+        <member name="P:Grappachu.Core.Preview.Net.Tcp.ISocketListener.Address">
+            <summary>
+                Ottiene o imposta un indirizzo IP per l'ascolto.
+            </summary>
+        </member>
+        <member name="P:Grappachu.Core.Preview.Net.Tcp.ISocketListener.IsListening">
+            <summary>
+                Ottiene un valore che indica se il componente è in ascolto.
+            </summary>
+        </member>
+        <member name="E:Grappachu.Core.Preview.Net.Tcp.ISocketListener.MessageReceived">
+            <summary>
+                Richiamato al ricevimento di un messaggio.
+            </summary>
+        </member>
+        <member name="M:Grappachu.Core.Preview.Net.Tcp.ISocketListener.Start">
+            <summary>
+                Avvia l'ascolto per la ricezione di messaggi.
+            </summary>
+        </member>
+        <member name="M:Grappachu.Core.Preview.Net.Tcp.ISocketListener.Stop">
+            <summary>
+                Termina l'ascolto per la ricezione di messaggi.
+            </summary>
+        </member>
+        <member name="T:Grappachu.Core.Preview.Net.Tcp.SocketListener">
+            <summary>
+            Definisce un componente in grado di ricevere messaggi TcpIp su Socket.
+            </summary>
+        </member>
+        <member name="E:Grappachu.Core.Preview.Net.Tcp.SocketListener.MessageReceived">
+            <summary>
+            Richiamato al ricevimento di un messaggio.
+            </summary>
+        </member>
+        <member name="E:Grappachu.Core.Preview.Net.Tcp.SocketListener.Error">
+            <summary>
+            Richiamato sul verificarsi di un errore.
+            </summary>
+        </member>
+        <member name="M:Grappachu.Core.Preview.Net.Tcp.SocketListener.OnError(Grappachu.Core.Lang.Domain.ErrorArgs)">
+            <summary>
+            
+            </summary>
+            <param name="e"></param>
+        </member>
+        <member name="M:Grappachu.Core.Preview.Net.Tcp.SocketListener.OnMessageReceived(Grappachu.Core.Preview.Net.Tcp.IncomingMessageArgs)">
+            <summary>
+             
+            </summary>
+            <param name="e"></param>
+        </member>
+        <member name="P:Grappachu.Core.Preview.Net.Tcp.SocketListener.Port">
+            <summary>
+            Ottiene o imposta una porta per l'ascolto.
+            </summary>
+        </member>
+        <member name="P:Grappachu.Core.Preview.Net.Tcp.SocketListener.Address">
+            <summary>
+            Ottiene o imposta un indirizzo IP per l'ascolto.
+            </summary>
+        </member>
+        <member name="P:Grappachu.Core.Preview.Net.Tcp.SocketListener.IsListening">
+            <summary>
+            Ottiene un valore che indica se il componente è in ascolto.
+            </summary>
+        </member>
+        <member name="M:Grappachu.Core.Preview.Net.Tcp.SocketListener.#ctor(System.Net.IPAddress,System.Int32)">
+            <summary>
+            Inizializza una nuova istanza di SocketListener
+            </summary>
+            <param name="address">Indirizzo IP su cui ricevere messaggi</param>
+            <param name="port">Porta su cui ricevere messaggi</param>
+        </member>
+        <member name="M:Grappachu.Core.Preview.Net.Tcp.SocketListener.Start">
+            <summary>
+            Avvia l'ascolto per la ricezione di messaggi.
+            </summary>
+        </member>
+        <member name="M:Grappachu.Core.Preview.Net.Tcp.SocketListener.Stop">
+            <summary>
+            Termina l'ascolto per la ricezione di messaggi.
+            </summary>
+        </member>
+        <member name="M:Grappachu.Core.Preview.Net.Tcp.SocketListener.Dispose">
+            <summary>
+             Chiude il Socket e rilascia tutte le risorse
+            </summary>
+        </member>
+        <member name="M:Grappachu.Core.Preview.Net.Tcp.SocketListener.Dispose(System.Boolean)">
+            <summary>
+            Chiude il Socket e rilascia tutte le risorse
+            </summary>
+            <param name="disposing"></param>
+        </member>
+        <member name="T:Grappachu.Core.Preview.Net.Url">
+            <summary>
+            Fornisce metodi di utilità per la manipolazione degli Url
+            </summary>
+        </member>
+        <member name="M:Grappachu.Core.Preview.Net.Url.Combine(System.String,System.String)">
+            <summary>
+            Concatena due frammenti di testo che compongono un Url
+            </summary>
+            <param name="part1"></param>
+            <param name="part2"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Grappachu.Core.Preview.Text.StringExtension">
+            <summary>
+                Adds extension methods for manipulating strings
+            </summary>
+        </member>
+        <member name="M:Grappachu.Core.Preview.Text.StringExtension.ToBitmap(System.String,System.Drawing.Font,System.Drawing.Brush)">
+            <summary>
+                Renders a text to a bitmap
+            </summary>
+            <param name="input"></param>
+            <param name="font"></param>
+            <param name="brush"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Grappachu.Core.Preview.Text.StringExtension.Contains(System.String,System.String,System.StringComparison)">
+            <summary>
+                Checks if a string matches a text using a string comparison option
+            </summary>
+            <param name="source"></param>
+            <param name="toCheck"></param>
+            <param name="comp"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Grappachu.Core.Preview.Runtime.Serialization.BinarySerializer">
+            <summary>
+            Rappresenta un componente per la serializzazione dei dati in formato binario
+            </summary>
+        </member>
+        <member name="M:Grappachu.Core.Preview.Runtime.Serialization.BinarySerializer.Serialize(System.Object)">
+            <summary>
+            Serializza un oggetto
+            </summary>
+            <param name="obj"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Grappachu.Core.Preview.Runtime.Serialization.BinarySerializer.Deserialize(System.Byte[])">
+            <summary>
+            Deserializza un oggetto
+            </summary>
+            <param name="data"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Grappachu.Core.Preview.Runtime.Serialization.IRuntimeSerializer">
+            <summary>
+            Definisce una interfaccia per la serializzazione dei dati
+            </summary>
+        </member>
+        <member name="M:Grappachu.Core.Preview.Runtime.Serialization.IRuntimeSerializer.Serialize(System.Object)">
+            <summary>
+            Serializza un oggetto
+            </summary>
+            <param name="data"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Grappachu.Core.Preview.Runtime.Serialization.IRuntimeSerializer.Deserialize(System.Byte[])">
+            <summary>
+            Deserializza un oggetto
+            </summary>
+            <param name="obj"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Grappachu.Core.Preview.Runtime.Threading.RuntimeHelper">
+            <summary>
+                Fornisce metodi per l'esecuzione di task
+            </summary>
+        </member>
+        <member name="M:Grappachu.Core.Preview.Runtime.Threading.RuntimeHelper.RunWithCulture(System.Globalization.CultureInfo,System.Action)">
+            <summary>
+                Runs a Action under a specified culture
+            </summary>
+            <param name="culture">Culture to run</param>
+            <param name="task">task to perform under specified culture</param>
+        </member>
+        <member name="M:Grappachu.Core.Preview.Runtime.Threading.RuntimeHelper.RunAsStaThread(System.Action)">
+            <summary>
+                Start an Action within an STA Thread
+            </summary>
+            <param name="goForIt"></param>
+        </member>
+        <member name="T:Grappachu.Core.Preview.Encryption.AES">
+            <summary>
+                Rappresenta un componente per la crittografia di stringhe e file
+            </summary>
+        </member>
+        <member name="M:Grappachu.Core.Preview.Encryption.AES.#ctor">
+            <summary>
+                Inizializza una nuova istanza di <see cref="T:Grappachu.Core.Preview.Encryption.AES" />
+            </summary>
+        </member>
+        <member name="P:Grappachu.Core.Preview.Encryption.AES.OutputFormat">
+            <summary>
+                Specifica il formato dell'output
+            </summary>
+        </member>
+        <member name="P:Grappachu.Core.Preview.Encryption.AES.Algorythm">
+            <summary>
+                Ottiene il tipo di algoritmo utilizzato da questo provider
+            </summary>
+        </member>
+        <member name="M:Grappachu.Core.Preview.Encryption.AES.EncryptFile(System.IO.FileInfo,System.IO.FileInfo,System.String)">
+            <summary>
+                Codifica un file utilizzando la chiave specificata
+            </summary>
+            <param name="source"></param>
+            <param name="target"></param>
+            <param name="encryptionKey"></param>
+        </member>
+        <member name="M:Grappachu.Core.Preview.Encryption.AES.DecryptFile(System.IO.FileInfo,System.IO.FileInfo,System.String)">
+            <summary>
+                Decodifica file utilizzando la chiave specificata
+            </summary>
+            <param name="source"></param>
+            <param name="target"></param>
+            <param name="encryptionKey"></param>
+        </member>
+        <member name="M:Grappachu.Core.Preview.Encryption.AES.Encrypt(System.String,System.String)">
+            <summary>
+                Codifica una stringa con la chiave specificata
+            </summary>
+            <param name="plainText"></param>
+            <param name="encryptionKey"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Grappachu.Core.Preview.Encryption.AES.Decrypt(System.String,System.String)">
+            <summary>
+                Decodifica una stringa con la chiave specificata
+            </summary>
+            <param name="encryptedText"></param>
+            <param name="encryptionKey"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Grappachu.Core.Preview.Encryption.EncryptionAlgorythm">
+            <summary>
+            Rappresenta un algoritmo di Crittografia
+            </summary>
+        </member>
+        <member name="F:Grappachu.Core.Preview.Encryption.EncryptionAlgorythm.Custom">
+            <summary>
+            Rappresenta un tipo di crittografia personalizzato
+            </summary>
+        </member>
+        <member name="F:Grappachu.Core.Preview.Encryption.EncryptionAlgorythm.AES">
+            <summary>
+             Rappresenta l'Advanced Encryption Standard (AES), conosciuto anche come Rijndael,
+            </summary>
+        </member>
+        <member name="T:Grappachu.Core.Preview.Encryption.IEncryptionProvider">
+            <summary>
+                Defines a component for data encryption
+            </summary>
+        </member>
+        <member name="P:Grappachu.Core.Preview.Encryption.IEncryptionProvider.Algorythm">
+            <summary>
+                Gets the encryption algorythm used by this provider
+            </summary>
+        </member>
+        <member name="M:Grappachu.Core.Preview.Encryption.IEncryptionProvider.EncryptFile(System.IO.FileInfo,System.IO.FileInfo,System.String)">
+            <summary>
+                Encrypts a file using the <paramref name="encryptionKey"/>
+            </summary>
+            <param name="source"></param>
+            <param name="target"></param>
+            <param name="encryptionKey">A user-defined key used for encrypt data</param>
+        </member>
+        <member name="M:Grappachu.Core.Preview.Encryption.IEncryptionProvider.DecryptFile(System.IO.FileInfo,System.IO.FileInfo,System.String)">
+            <summary>
+                Decrypts a file using the defined key
+            </summary>
+            <param name="source"></param>
+            <param name="target"></param>
+            <param name="encryptionKey"></param>
+        </member>
+        <member name="M:Grappachu.Core.Preview.Encryption.IEncryptionProvider.Encrypt(System.String,System.String)">
+            <summary>
+                Codifica una stringa con la chiave specificata
+            </summary>
+            <param name="plainText"></param>
+            <param name="encryptionKey"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Grappachu.Core.Preview.Encryption.IEncryptionProvider.Decrypt(System.String,System.String)">
+            <summary>
+                Decodifica una stringa con la chiave specificata
+            </summary>
+            <param name="encryptedText"></param>
+            <param name="encryptionKey"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Grappachu.Core.Preview.UI.Dialogs">
+            <summary>
+                Defines a simple dialog implementation based on Windows Forms
+            </summary>
+        </member>
+        <member name="M:Grappachu.Core.Preview.UI.Dialogs.Info(System.String,System.String)">
+            <summary>
+                Displays a Info dialog
+            </summary>
+            <param name="message"></param>
+            <param name="title"></param>
+        </member>
+        <member name="M:Grappachu.Core.Preview.UI.Dialogs.Error(System.String,System.String)">
+            <summary>
+                Displays a Error dialog
+            </summary>
+            <param name="message"></param>
+            <param name="title"></param>
+        </member>
+        <member name="M:Grappachu.Core.Preview.UI.Dialogs.Warning(System.String,System.String)">
+            <summary>
+                Displays a Warning dialog
+            </summary>
+            <param name="message"></param>
+            <param name="title"></param>
+        </member>
+        <member name="M:Grappachu.Core.Preview.UI.Dialogs.Question(System.String,System.String,System.Boolean)">
+            <summary>
+                Displays a simple question dialog
+            </summary>
+            <param name="message"></param>
+            <param name="title"></param>
+            <param name="asWarning"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Grappachu.Core.Preview.UI.Dialogs.ShowInfo(System.String,System.String)">
+            <summary>
+                Displays a Info dialog
+            </summary>
+            <param name="message"></param>
+            <param name="title"></param>
+        </member>
+        <member name="M:Grappachu.Core.Preview.UI.Dialogs.ShowError(System.String,System.String)">
+            <summary>
+                Displays a Error dialog
+            </summary>
+            <param name="message"></param>
+            <param name="title"></param>
+        </member>
+        <member name="M:Grappachu.Core.Preview.UI.Dialogs.ShowError(System.Exception,System.String)">
+            <summary>
+                Displays a Error dialog
+            </summary>
+            <param name="exception"></param>
+            <param name="title"></param>
+        </member>
+        <member name="M:Grappachu.Core.Preview.UI.Dialogs.ShowWarning(System.String,System.String)">
+            <summary>
+                Displays a Warning dialog
+            </summary>
+            <param name="message"></param>
+            <param name="title"></param>
+        </member>
+        <member name="M:Grappachu.Core.Preview.UI.Dialogs.ShowQuestion(System.String,System.String,System.Boolean)">
+            <summary>
+                Displays a simple question dialog
+            </summary>
+            <param name="message"></param>
+            <param name="title"></param>
+            <param name="asWarning"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Grappachu.Core.Preview.UI.IDialogHolder">
+            <summary>
+                Defines a basic interface for handling user interaction trough dialogs
+            </summary>
+        </member>
+        <member name="M:Grappachu.Core.Preview.UI.IDialogHolder.Info(System.String,System.String)">
+            <summary>
+                Displays a Info dialog
+            </summary>
+            <param name="message"></param>
+            <param name="title"></param>
+        </member>
+        <member name="M:Grappachu.Core.Preview.UI.IDialogHolder.Error(System.String,System.String)">
+            <summary>
+                Displays a Error dialog
+            </summary>
+            <param name="message"></param>
+            <param name="title"></param>
+        </member>
+        <member name="M:Grappachu.Core.Preview.UI.IDialogHolder.Warning(System.String,System.String)">
+            <summary>
+                Displays a Warning dialog
+            </summary>
+            <param name="message"></param>
+            <param name="title"></param>
+        </member>
+        <member name="M:Grappachu.Core.Preview.UI.IDialogHolder.Question(System.String,System.String,System.Boolean)">
+            <summary>
+                Displays a simple question dialog
+            </summary>
+            <param name="message"></param>
+            <param name="title"></param>
+            <param name="asWarning"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Grappachu.Core.Lang.Domain.ErrorArgs">
+            <summary>
+                Represents a generic class for classes that contain event data for errors.
+            </summary>
+        </member>
+        <member name="M:Grappachu.Core.Lang.Domain.ErrorArgs.#ctor">
+            <summary>
+                Creates a new instance of <see cref="T:Grappachu.Core.Lang.Domain.ErrorArgs" />
+            </summary>
+        </member>
+        <member name="M:Grappachu.Core.Lang.Domain.ErrorArgs.#ctor(System.Exception)">
+            <summary>
+                Creates a new instance of <see cref="T:Grappachu.Core.Lang.Domain.ErrorArgs" />
+            </summary>
+            <param name="ex"></param>
+        </member>
+        <member name="P:Grappachu.Core.Lang.Domain.ErrorArgs.Messsage">
+            <summary>
+                Gets or sets the error message
+            </summary>
+        </member>
+        <member name="P:Grappachu.Core.Lang.Domain.ErrorArgs.Detail">
+            <summary>
+                Gets or sets a detailed description for the error
+            </summary>
+        </member>
+        <member name="T:Grappachu.Core.Lang.Domain.MessageArgs">
+            <summary>
+                Represents a basic class that contain a simple text event data.
+            </summary>
+        </member>
+        <member name="M:Grappachu.Core.Lang.Domain.MessageArgs.#ctor(System.String)">
+            <summary>
+                Creates a new instance of <see cref="T:Grappachu.Core.Lang.Domain.MessageArgs" />
+            </summary>
+            <param name="message"></param>
+        </member>
+        <member name="P:Grappachu.Core.Lang.Domain.MessageArgs.Message">
+            <summary>
+                Gets or sets the message content
+            </summary>
+        </member>
+        <member name="T:Grappachu.Core.Lang.Extensions.ComparableExtensions">
+            <summary>
+                Extension methods for <see cref="T:System.IComparable`1" /> objects
+            </summary>
+        </member>
+        <member name="M:Grappachu.Core.Lang.Extensions.ComparableExtensions.Between``1(``0,``0,``0)">
+            <summary>
+                Gets true when the item is included in a interval (including bounds)
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="subject"></param>
+            <param name="inclusiveLowerBound"></param>
+            <param name="inclusiveHigherBound"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Grappachu.Core.Lang.Extensions.ComparableExtensions.BetweenStrict``1(``0,``0,``0)">
+            <summary>
+                Gets true when the item is strictly included (excluding bounds) in a interval.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="subject"></param>
+            <param name="exclusiveLowerBound"></param>
+            <param name="exclusiveHigherBound"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Grappachu.Core.Lang.Extensions.ComparableExtensions.Or``1(``0,``0)">
+            <summary>
+                Checks the <paramref name="preferred" /> value and returns the <paramref name="alternative" /> when the first one
+                has no value
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="preferred"></param>
+            <param name="alternative"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Grappachu.Core.Lang.Extensions.EnumExtensions">
+            <summary>
+                Extension methods for <see cref="T:System.Enum" /> types
+            </summary>
+        </member>
+        <member name="M:Grappachu.Core.Lang.Extensions.EnumExtensions.GetDescription``1(``0)">
+            <summary>
+            Returns the value of <see cref="T:System.ComponentModel.DescriptionAttribute"/>
+            </summary>
+            <param name="enumerationValue"></param>
+            <typeparam name="T"></typeparam>
+            <returns></returns>
+            <exception cref="T:System.ArgumentException"></exception>
+        </member>
+        <member name="T:Grappachu.Core.Lang.Extensions.ByteArrayExtensions">
+            <summary>
+                Defines a set of extension methods for array of bytes
+            </summary>
+        </member>
+        <member name="M:Grappachu.Core.Lang.Extensions.ByteArrayExtensions.ToString(System.Byte[],Grappachu.Core.Lang.Text.BinaryRepresentation)">
+            <summary>
+                Converts a byte array to a string according to the specified representation
+            </summary>
+            <param name="data"></param>
+            <param name="representation">Specifies the number of bytes used to represent a single char</param>
+            <returns></returns>
+            <exception cref="T:System.NotSupportedException">
+                This method currently supports only <see cref="F:Grappachu.Core.Lang.Text.BinaryRepresentation.Base64" />
+                and <see cref="F:Grappachu.Core.Lang.Text.BinaryRepresentation.Hex" /> encodings
+            </exception>
+        </member>
+        <member name="M:Grappachu.Core.Lang.Extensions.ByteArrayExtensions.ToByteArray(System.String,Grappachu.Core.Lang.Text.BinaryRepresentation)">
+            <summary>
+                Converts a string into a byte array using the specified representation to perform conversion
+            </summary>
+            <param name="text">text to convert</param>
+            <param name="representation">Specifies the binary representation of the input string</param>
+            <exception cref="T:System.NotSupportedException">
+                This method currently supports only <see cref="F:Grappachu.Core.Lang.Text.BinaryRepresentation.Base64" />
+                and <see cref="F:Grappachu.Core.Lang.Text.BinaryRepresentation.Hex" /> encodings
+            </exception>
+            <returns></returns>
+        </member>
+        <member name="T:Grappachu.Core.Lang.Extensions.StringExtensions">
+            <summary>
+                Extension methods for manipulating  <see cref="T:System.String" /> objects
+            </summary>
+        </member>
+        <member name="M:Grappachu.Core.Lang.Extensions.StringExtensions.ToDecimal(System.String)">
+            <summary>
+                Convert string value to decimal ignore the culture.
+            </summary>
+            <param name="value">The value.</param>
+            <returns>Decimal value.</returns>
+        </member>
+        <member name="M:Grappachu.Core.Lang.Extensions.StringExtensions.SwapChar(System.String,System.Char,System.Char)">
+            <summary>
+                Swaps the decimal separator chars.
+            </summary>
+        </member>
+        <member name="M:Grappachu.Core.Lang.Extensions.StringExtensions.Wrap(System.String,System.Int32)">
+            <summary>
+                Wraps a text over multiple lines by inserting newline char when required.
+            </summary>
+            <param name="text"></param>
+            <param name="maxLineLength">max length of lines in chars</param>
+        </member>
+        <member name="T:Grappachu.Core.Lang.Text.LevenshteinDistance">
+            <summary>
+                The Levenshtein distance between two words is the minimum number of single-character edits
+            </summary>
+            <remarks>
+                Levenshtein distance is the minimum number of basic changes between two strings A,B to transform A into B
+                It's a basic change:
+                - single char deletion
+                - single char replacement
+                - single char added
+            </remarks>
+        </member>
+        <member name="M:Grappachu.Core.Lang.Text.LevenshteinDistance.Compute(System.String,System.String)">
+            <summary>
+                Computes the distance from two strings. This is case sensitive.
+            </summary>
+        </member>
+        <member name="M:Grappachu.Core.Lang.Text.LevenshteinDistance.ComputeIgnoreCase(System.String,System.String)">
+            <summary>
+                Computes the distance between two strings regadless of the case
+            </summary>
+            <param name="s1"></param>
+            <param name="s2"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Grappachu.Core.Lang.Text.BinaryRepresentation">
+            <summary>
+                Defines representations for binary data
+            </summary>
+        </member>
+        <member name="F:Grappachu.Core.Lang.Text.BinaryRepresentation.Hex">
+            <summary>
+                Hexadecimal format
+            </summary>
+        </member>
+        <member name="F:Grappachu.Core.Lang.Text.BinaryRepresentation.Base64">
+            <summary>
+                Base64 format
+            </summary>
+        </member>
+        <member name="T:Grappachu.Core.Drawing.Extensions.ImageExtension">
+            <summary>
+                Extension methods for <see cref="T:System.Drawing.Image" />
+            </summary>
+        </member>
+        <member name="M:Grappachu.Core.Drawing.Extensions.ImageExtension.Resize(System.Drawing.Image,System.Drawing.Size,Grappachu.Core.Drawing.GraphicsQuality,System.Drawing.Imaging.PixelFormat)">
+            <summary>
+                Resizes an image to fit into the desired Size without preserving aspect ratio
+            </summary>
+            <param name="image"></param>
+            <param name="quality"></param>
+            <param name="format"></param>
+            <param name="outputSize"></param>
+        </member>
+        <member name="M:Grappachu.Core.Drawing.Extensions.ImageExtension.GetGraphics(System.Drawing.Image,Grappachu.Core.Drawing.GraphicsQuality)">
+            <summary>
+                Creates a graphics object from image
+            </summary>
+            <param name="img"></param>
+            <param name="quality"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Grappachu.Core.Drawing.Extensions.ImageExtension.GetBytes(System.Drawing.Image,System.Drawing.Imaging.ImageFormat)">
+            <summary>
+                 Converts an image into as specific <see cref="T:System.Drawing.Imaging.ImageFormat"/> an returns it as byte array.
+            </summary>
+            <param name="img"></param>
+            <param name="format"></param>
+            <returns></returns>
+            <remarks>This method is fastest than <see cref="M:Grappachu.Core.Drawing.Extensions.ImageExtension.GetBytes(System.Drawing.Image)" /></remarks>
+        </member>
+        <member name="M:Grappachu.Core.Drawing.Extensions.ImageExtension.GetBytes(System.Drawing.Image)">
+            <summary>
+                Gets an image as a Byte array.
+            </summary>
+            <param name="img"></param>
+            <returns></returns>
+            <remarks></remarks>
+        </member>
+        <member name="M:Grappachu.Core.Drawing.Extensions.ImageExtension.ScaleToFit(System.Drawing.Image,System.Drawing.Size,Grappachu.Core.Drawing.GraphicsQuality,System.Drawing.Imaging.PixelFormat)">
+            <summary>
+                Resizes an image proportionally to fit into the desired Size
+            </summary>
+            <param name="img"></param>
+            <param name="format"></param>
+            <param name="maxSize"></param>
+            <param name="quality"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Grappachu.Core.Drawing.Extensions.ImageExtension.ScaleToFit(System.Drawing.Image,System.Int32,System.Int32,Grappachu.Core.Drawing.GraphicsQuality,System.Drawing.Imaging.PixelFormat)">
+            <summary>
+                Resizes an image proportionally to fit into the desired Size
+            </summary>
+            <param name="img">Image to resize</param>
+            <param name="maxWidth">Output maximum width</param>
+            <param name="maxHeight">Output maximum height</param>
+            <param name="format"></param>
+            <param name="quality"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Grappachu.Core.Drawing.Extensions.ImageExtension.ScaleToSize(System.Drawing.Image,System.Drawing.Size,System.Drawing.Color,Grappachu.Core.Drawing.GraphicsQuality,System.Drawing.Imaging.PixelFormat)">
+            <summary>
+                Resizes an image proportionally adding borders to fit into the desired Size
+            </summary>
+            <param name="img">Image to resize</param>
+            <param name="outputSize">Output size</param>
+            <param name="backColor">Background color for the output image</param>
+            <param name="quality"></param>
+            <param name="format"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Grappachu.Core.Drawing.Extensions.ImageExtension.ScaleToSize(System.Drawing.Image,System.Int32,System.Int32,System.Drawing.Color,Grappachu.Core.Drawing.GraphicsQuality,System.Drawing.Imaging.PixelFormat)">
+            <summary>
+                Resizes an image proportionally adding borders to fit into the desired Size
+            </summary>
+            <param name="img">Image to resize</param>
+            <param name="width">Output width</param>
+            <param name="height">Output height</param>
+            <param name="backColor">Background color for the output image</param>
+            <param name="quality"></param>
+            <param name="format"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Grappachu.Core.Drawing.Extensions.ImageExtension.ScaleToFill(System.Drawing.Image,System.Drawing.Size,System.Drawing.ContentAlignment,Grappachu.Core.Drawing.GraphicsQuality,System.Drawing.Imaging.PixelFormat)">
+            <summary>
+                Resizes proportionally and crops an image to fill the desired Size
+            </summary>
+            <param name="imgPhoto"></param>
+            <param name="outputSize"></param>
+            <param name="alignment"></param>
+            <param name="quality"></param>
+            <param name="format"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Grappachu.Core.Drawing.Extensions.ImageExtension.ScaleToFill(System.Drawing.Image,System.Int32,System.Int32,System.Drawing.ContentAlignment,Grappachu.Core.Drawing.GraphicsQuality,System.Drawing.Imaging.PixelFormat)">
+            <summary>
+                Resizes proportionally and crops an image to fill the desired Size
+            </summary>
+            <param name="imgPhoto"></param>
+            <param name="width"></param>
+            <param name="height"></param>
+            <param name="alignment"></param>
+            <param name="quality"></param>
+            <param name="format"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Grappachu.Core.Drawing.Extensions.ImageExtension.EnlargeCanvas(System.Drawing.Image,System.Drawing.Size,System.Drawing.Color,System.Drawing.ContentAlignment,Grappachu.Core.Drawing.GraphicsQuality,System.Drawing.Imaging.PixelFormat)">
+            <summary>
+                Enlarge the image background using the specified color
+            </summary>
+            <param name="img"></param>
+            <param name="size"></param>
+            <param name="backColor"></param>
+            <param name="imgAlignment"></param>
+            <param name="quality"></param>
+            <param name="format"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Grappachu.Core.Drawing.Extensions.ImageExtension.EnlargeCanvas(System.Drawing.Image,System.Int32,System.Int32,System.Drawing.Color,System.Drawing.ContentAlignment,Grappachu.Core.Drawing.GraphicsQuality,System.Drawing.Imaging.PixelFormat)">
+            <summary>
+                Enlarge the image background using the specified color
+            </summary>
+            <param name="img"></param>
+            <param name="backColor"></param>
+            <param name="imgAlignment"></param>
+            <param name="quality"></param>
+            <param name="format"></param>
+            <param name="width"></param>
+            <param name="height"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Grappachu.Core.Drawing.Extensions.ImageExtension.EnlargeCanvas(System.Drawing.Image,System.Int32,System.Drawing.Color,Grappachu.Core.Drawing.GraphicsQuality,System.Drawing.Imaging.PixelFormat)">
+            <summary>
+                Adds a Border to the image
+            </summary>
+            <param name="img"></param>
+            <param name="borderThickness">Width of the border (px)</param>
+            <param name="borderColor">Color of the border</param>
+            <param name="quality"></param>
+            <param name="format"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Grappachu.Core.Drawing.Extensions.RectangeFExtension">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Grappachu.Core.Drawing.Extensions.RectangeFExtension.GetCenterF(System.Drawing.RectangleF)">
+            <summary>
+                Gets a point in the center of rectangle
+            </summary>
+            <param name="rect"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Grappachu.Core.Drawing.Extensions.RectangeFExtension.GetCenter(System.Drawing.RectangleF)">
+            <summary>
+                Gets a point in the center of rectangle
+            </summary>
+            <param name="rect"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Grappachu.Core.Drawing.Extensions.RectangeFExtension.IntersectX(System.Drawing.RectangleF,System.Single)">
+            <summary>
+                Checks if a rectangle covers a point on X-Axis
+            </summary>
+            <param name="rect"></param>
+            <param name="xPoint"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Grappachu.Core.Drawing.Extensions.RectangeFExtension.IntersectY(System.Drawing.RectangleF,System.Single)">
+            <summary>
+                Checks if a rectangle covers a point on Y-Axis
+            </summary>
+            <param name="rect"></param>
+            <param name="yPoint"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Grappachu.Core.Drawing.GraphicsQuality">
+            <summary>
+                Defines a group of settings for image quality operations
+            </summary>
+        </member>
+        <member name="F:Grappachu.Core.Drawing.GraphicsQuality.Default">
+            <summary>
+                Default system settings
+            </summary>
+        </member>
+        <member name="F:Grappachu.Core.Drawing.GraphicsQuality.Highest">
+            <summary>
+                All settings must maximize the quality
+            </summary>
+        </member>
+        <member name="F:Grappachu.Core.Drawing.GraphicsQuality.Fastest">
+            <summary>
+                All settings must maximize the performance
+            </summary>
+        </member>
+        <member name="F:Grappachu.Core.Drawing.GraphicsQuality.Custom">
+            <summary>
+                User will provide custom settings
+            </summary>
+        </member>
+        <member name="T:Grappachu.Core.Drawing.RotationDirection">
+            <summary>
+                Defines the rotate direction on a two dimensional plan
+            </summary>
+        </member>
+        <member name="F:Grappachu.Core.Drawing.RotationDirection.Clockwise">
+            <summary>
+                Clockwise direction
+            </summary>
+        </member>
+        <member name="F:Grappachu.Core.Drawing.RotationDirection.AntiClockwise">
+            <summary>
+                AntiClockwise direction
+            </summary>
+        </member>
+        <member name="T:Grappachu.Core.Drawing.Layout.MeasureCellEventArgs">
+            <summary>
+                Encapsulates data for measuring the text size of a single table cell
+            </summary>
+        </member>
+        <member name="M:Grappachu.Core.Drawing.Layout.MeasureCellEventArgs.#ctor(System.Int32,System.Int32,System.Drawing.Font,System.Int32)">
+            <summary>
+                Creates a new instance of <see cref="T:Grappachu.Core.Drawing.Layout.MeasureCellEventArgs" />
+            </summary>
+            <param name="row">index 0-based for the row</param>
+            <param name="column">index 0-based for the column</param>
+            <param name="font">font for the text</param>
+            <param name="cellPadding">padding</param>
+        </member>
+        <member name="P:Grappachu.Core.Drawing.Layout.MeasureCellEventArgs.Row">
+            <summary>
+                Gets the row index 0-based for the measuring cell
+            </summary>
+        </member>
+        <member name="P:Grappachu.Core.Drawing.Layout.MeasureCellEventArgs.Column">
+            <summary>
+                Gets the column index 0-based for the measuring cell
+            </summary>
+        </member>
+        <member name="P:Grappachu.Core.Drawing.Layout.MeasureCellEventArgs.CellFont">
+            <summary>
+                Gets or sets the font to use for measuring
+            </summary>
+        </member>
+        <member name="P:Grappachu.Core.Drawing.Layout.MeasureCellEventArgs.CellPadding">
+            <summary>
+                Gets or sets the padding to use for measuring
+            </summary>
+        </member>
+        <member name="P:Grappachu.Core.Drawing.Layout.MeasureCellEventArgs.MaxWordWidth">
+            <summary>
+                Gets or sets a custom size for the longest word in the measuring text.
+                This measure is used to determine the minimum width of the column
+            </summary>
+        </member>
+        <member name="P:Grappachu.Core.Drawing.Layout.MeasureCellEventArgs.MaxTextWidth">
+            <summary>
+                Gets or sets a custom size for the width of the the measuring text.
+                This measure is used to determine the maximum width of the column
+            </summary>
+        </member>
+        <member name="T:Grappachu.Core.Drawing.Layout.TableLayoutEngine">
+            <summary>
+                Defines a component for computing sizes of <see cref="T:System.Data.DataTable" /> columns.
+            </summary>
+        </member>
+        <member name="M:Grappachu.Core.Drawing.Layout.TableLayoutEngine.#ctor(System.Drawing.Font)">
+            <summary>
+                Creates a new instance of <see cref="T:Grappachu.Core.Drawing.Layout.TableLayoutEngine" />
+            </summary>
+            <param name="defaultFont"></param>
+        </member>
+        <member name="P:Grappachu.Core.Drawing.Layout.TableLayoutEngine.DefaultCellPadding">
+            <summary>
+                Gets or sets the cell padding in in pixels
+            </summary>
+        </member>
+        <member name="P:Grappachu.Core.Drawing.Layout.TableLayoutEngine.DefaultFont">
+            <summary>
+                Gets or sets the default font used for computing column sizes
+            </summary>
+        </member>
+        <member name="P:Grappachu.Core.Drawing.Layout.TableLayoutEngine.TableBorderSize">
+            <summary>
+                Gets or sets a width of cell borders in pixels
+            </summary>
+        </member>
+        <member name="E:Grappachu.Core.Drawing.Layout.TableLayoutEngine.MeasuringCell">
+            <summary>
+                Raised when measuring the size of a single table cell
+            </summary>
+        </member>
+        <member name="M:Grappachu.Core.Drawing.Layout.TableLayoutEngine.GetColumnSizes(System.Data.DataTable,System.Int32)">
+            <summary>
+                Computes the optimal size for all columns in a table
+                and return an array of widths in pixels
+            </summary>
+            <param name="table">table to compute</param>
+            <param name="preferredWidth">desired width (pixels) to fit in</param>
+            <returns></returns>
+        </member>
+        <member name="T:Grappachu.Core.NativeMethods">
+            <summary>
+                Native Methods Set
+            </summary>
+        </member>
+        <member name="T:Grappachu.Core.Globalization.Providers.FileSizeFormatter">
+            <summary>
+                Defines a component for localized filesize formatting. 
+            </summary>
+            <example>
+                Example of usage:
+                <code>
+               long bytes = 123456;
+               var formattedSize = String.Format(new FileSizeFormatter(), "{0}", bytes);
+            </code>
+            </example>
+        </member>
+        <member name="M:Grappachu.Core.Globalization.Providers.FileSizeFormatter.#ctor(System.Globalization.CultureInfo)">
+            <summary>
+                Defines a component for filesize formatting according to a specified culture
+            </summary>
+            <param name="culture"></param>
+        </member>
+        <member name="M:Grappachu.Core.Globalization.Providers.FileSizeFormatter.#ctor">
+            <summary>
+                Defines a component for filesize formatting according to <see cref="P:System.Globalization.CultureInfo.InvariantCulture" />
+            </summary>
+        </member>
+        <member name="P:Grappachu.Core.Globalization.Providers.FileSizeFormatter.Culture">
+            <summary>
+                Gets the culture for this provider
+            </summary>
+        </member>
+        <member name="M:Grappachu.Core.Globalization.Providers.FileSizeFormatter.Format(System.String,System.Object,System.IFormatProvider)">
+            <inheritdoc />
+        </member>
+        <member name="M:Grappachu.Core.Globalization.Providers.FileSizeFormatter.GetFormat(System.Type)">
+            <inheritdoc />
+        </member>
+        <member name="T:Grappachu.Core.Collections.Extensions.CollectionExtensions">
+            <summary>
+                Extension methods for <see cref="T:System.Collections.ICollection" /> objects
+            </summary>
+        </member>
+        <member name="M:Grappachu.Core.Collections.Extensions.CollectionExtensions.IndexOf``1(System.Collections.IEnumerable,``0)">
+            <summary>
+                Finds the <paramref name="obj" /> in the collection and returns the first occurrence of it.
+            </summary>
+            <param name="collection"></param>
+            <param name="obj"></param>
+            <returns>The index of the item zero based or -1 when object is not found</returns>
+        </member>
+        <member name="M:Grappachu.Core.Collections.Extensions.CollectionExtensions.Insert``1(System.Collections.Generic.ICollection{``0},System.Int32,``0)">
+            <summary>
+                Allows to add an element into a <see cref="T:System.Collections.Generic.ICollection`1" />
+                at the <paramref name="index" /> specified
+            </summary>
+            <param name="collection"></param>
+            <param name="index"></param>
+            <param name="obj"></param>
+        </member>
+        <member name="M:Grappachu.Core.Collections.Extensions.CollectionExtensions.ShiftFirst``1(System.Collections.Generic.ICollection{``0},``0)">
+            <summary>
+                Moves an element of the collection one step to the begin
+            </summary>
+            <param name="collection"></param>
+            <param name="obj"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Grappachu.Core.Collections.Extensions.CollectionExtensions.ShiftLast``1(System.Collections.Generic.ICollection{``0},``0)">
+            <summary>
+                Moves an element of the collection one step to the end
+            </summary>
+            <param name="collection"></param>
+            <param name="obj"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Grappachu.Core.Collections.Duplicates.DuplicateGroup`2">
+            <summary>
+                Represents a generic group for duplicated objects
+            </summary>
+            <typeparam name="TK">Key for the duplicate group</typeparam>
+            <typeparam name="T">Type of duplicated items</typeparam>
+        </member>
+        <member name="M:Grappachu.Core.Collections.Duplicates.DuplicateGroup`2.#ctor">
+            <summary>
+                Creates a new instance of <see cref="T:Grappachu.Core.Collections.Duplicates.DuplicateGroup`2" />
+            </summary>
+        </member>
+        <member name="M:Grappachu.Core.Collections.Duplicates.DuplicateGroup`2.#ctor(`0)">
+            <summary>
+                Creates a new instance of  <see cref="T:Grappachu.Core.Collections.Duplicates.DuplicateGroup`2" />
+            </summary>
+            <param name="key">Key for grouping duplicates</param>
+        </member>
+        <member name="P:Grappachu.Core.Collections.Duplicates.DuplicateGroup`2.Key">
+            <summary>
+                Gets or sets the key for the items in the duplicate group
+            </summary>
+        </member>
+        <member name="P:Grappachu.Core.Collections.Duplicates.DuplicateGroup`2.Items">
+            <summary>
+                Gets or sets the list of all duplicate objects
+            </summary>
+        </member>
+        <member name="T:Grappachu.Core.Media.IMediaPlayer`1">
+            <summary>
+                Extends the <see cref="T:Grappachu.Core.Media.IPlayable" /> interface with functions for handling different media contents
+            </summary>
+        </member>
+        <member name="P:Grappachu.Core.Media.IMediaPlayer`1.Source">
+            <summary>
+                Gets or sets the media content for the <see cref="T:Grappachu.Core.Media.IMediaPlayer`1" />
+            </summary>
+        </member>
+        <member name="M:Grappachu.Core.Media.IMediaPlayer`1.Open(`0)">
+            <summary>
+                Loads a media item
+            </summary>
+        </member>
+        <member name="M:Grappachu.Core.Media.IMediaPlayer`1.Close">
+            <summary>
+                Uunloads the current media item releasing resources
+            </summary>
+        </member>
+        <member name="T:Grappachu.Core.Media.IMediaSource">
+            <summary>
+               A generic interface for representing media sources
+            </summary>
+        </member>
+        <member name="T:Grappachu.Core.Media.IPlayable">
+            <summary>
+                Defines a component that implements basic playback functions (Play/Stop/Pause)
+            </summary>
+        </member>
+        <member name="P:Grappachu.Core.Media.IPlayable.Status">
+            <summary>
+                Gets the state of this playable object
+            </summary>
+        </member>
+        <member name="E:Grappachu.Core.Media.IPlayable.MediaEnded">
+            <summary>
+                Invoked at end of media 
+            </summary>
+        </member>
+        <member name="E:Grappachu.Core.Media.IPlayable.MediaStateChanged">
+            <summary>
+                Invoked whend the <see cref="T:Grappachu.Core.Media.IPlayable"/> object changes its state
+            </summary>
+        </member>
+        <member name="M:Grappachu.Core.Media.IPlayable.Play">
+            <summary>
+                Starts the playback
+            </summary>
+        </member>
+        <member name="M:Grappachu.Core.Media.IPlayable.Stop">
+            <summary>
+                Stops the playback
+            </summary>
+        </member>
+        <member name="M:Grappachu.Core.Media.IPlayable.Pause">
+            <summary>
+                Puts the playback in a paused state
+            </summary>
+        </member>
+        <member name="T:Grappachu.Core.Media.ISeekable">
+            <summary>
+                Defines a component capable of locate a point in a time interval
+            </summary>
+        </member>
+        <member name="M:Grappachu.Core.Media.ISeekable.Seek(System.TimeSpan)">
+            <summary>
+                Updates the current position for the <see cref="T:Grappachu.Core.Media.ISeekable" /> object
+            </summary>
+            <param name="time"></param>
+        </member>
+        <member name="T:Grappachu.Core.Media.ITimeable">
+            <summary>
+                Defines a component that interacts in a time interval
+            </summary>
+        </member>
+        <member name="P:Grappachu.Core.Media.ITimeable.Position">
+            <summary>
+                Gets the time position for the current interaction
+            </summary>
+        </member>
+        <member name="P:Grappachu.Core.Media.ITimeable.Duration">
+            <summary>
+                Gets the total time interval where the <see cref="P:Grappachu.Core.Media.ITimeable.Position" /> can move
+            </summary>
+        </member>
+        <member name="T:Grappachu.Core.Media.Common.MediaState">
+            <summary>
+                Defines the playing state for a <see cref="T:Grappachu.Core.Media.IPlayable"/> object
+            </summary>
+        </member>
+        <member name="F:Grappachu.Core.Media.Common.MediaState.Waiting">
+            <summary>
+                No media content is available for playing
+            </summary>
+        </member>
+        <member name="F:Grappachu.Core.Media.Common.MediaState.Loading">
+            <summary>
+                The current media item is getting additional data before start playing
+            </summary>
+        </member>
+        <member name="F:Grappachu.Core.Media.Common.MediaState.Ready">
+            <summary>
+                Ready to begin playing.
+            </summary>
+        </member>
+        <member name="F:Grappachu.Core.Media.Common.MediaState.Playing">
+            <summary>
+                The current media item is playing.
+            </summary>
+        </member>
+        <member name="F:Grappachu.Core.Media.Common.MediaState.Paused">
+            <summary>
+                Playback of the current media item is paused. When a media item is paused, resuming playback begins from the same
+                location.
+            </summary>
+        </member>
+        <member name="F:Grappachu.Core.Media.Common.MediaState.Stopped">
+            <summary>
+                Playback of the current media item is stopped
+            </summary>
+        </member>
+        <member name="T:Grappachu.Core.Media.Common.MediaStateEventArgs">
+            <summary>
+                Defines the base class for status change of a media player
+            </summary>
+        </member>
+        <member name="M:Grappachu.Core.Media.Common.MediaStateEventArgs.#ctor(Grappachu.Core.Media.Common.MediaState)">
+            <summary>
+                creates a new instance of <see cref="T:Grappachu.Core.Media.Common.MediaStateEventArgs" />
+            </summary>
+            <param name="state"></param>
+        </member>
+        <member name="P:Grappachu.Core.Media.Common.MediaStateEventArgs.State">
+            <summary>
+                Gets the new media state for the sender
+            </summary>
+        </member>
+        <member name="T:Grappachu.Core.Media.Common.MediaUriSource">
+            <summary>
+                Defines a generic media content wich can be identified by a url
+            </summary>
+        </member>
+        <member name="M:Grappachu.Core.Media.Common.MediaUriSource.#ctor(System.String)">
+            <summary>
+                Creates a new instance <see cref="T:Grappachu.Core.Media.Common.MediaUriSource" /> from a path
+            </summary>
+            <param name="uriPath"></param>
+        </member>
+        <member name="M:Grappachu.Core.Media.Common.MediaUriSource.#ctor(System.Uri)">
+            <summary>
+                Creates a new instance <see cref="T:Grappachu.Core.Media.Common.MediaUriSource" /> from a uri
+            </summary>
+            <param name="uri"></param>
+        </member>
+        <member name="P:Grappachu.Core.Media.Common.MediaUriSource.Uri">
+            <summary>
+                Gets the uri used to create this instance of <see cref="T:Grappachu.Core.Media.Common.MediaUriSource" />
+            </summary>
+        </member>
+        <member name="T:Grappachu.Core.Media.Common.PlayOrder">
+            <summary>
+                Defines a play order for media contents
+            </summary>
+        </member>
+        <member name="F:Grappachu.Core.Media.Common.PlayOrder.Forward">
+            <summary>
+                The contents are played from the first to the last
+            </summary>
+        </member>
+        <member name="F:Grappachu.Core.Media.Common.PlayOrder.Reverse">
+            <summary>
+                Contents are played in reverse order from last to first
+            </summary>
+        </member>
+        <member name="F:Grappachu.Core.Media.Common.PlayOrder.Random">
+            <summary>
+                The contents are played in random order
+            </summary>
+        </member>
+        <member name="T:Grappachu.Core.Runtime.Compilers.CompilerResultsExtensions">
+            <summary>
+                Defines a set of extension methods for <see cref="T:System.CodeDom.Compiler.CompilerResults" />
+            </summary>
+        </member>
+        <member name="M:Grappachu.Core.Runtime.Compilers.CompilerResultsExtensions.Run``1(System.CodeDom.Compiler.CompilerResults,System.String,System.String,System.Object[])">
+            <summary>
+                Executes functional code and returns the output
+            </summary>
+            <param name="compiledAssembly"></param>
+            <param name="className"></param>
+            <param name="methodName"></param>
+            <param name="methodParameters"></param>
+            <typeparam name="T"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:Grappachu.Core.Runtime.Compilers.CompilerResultsExtensions.Run(System.CodeDom.Compiler.CompilerResults,System.String,System.String,System.Object[])">
+            <summary>
+                Executes procedural code
+            </summary>
+            <param name="compiledAssembly"></param>
+            <param name="className"></param>
+            <param name="methodName"></param>
+            <param name="methodParameters"></param>
+        </member>
+        <member name="T:Grappachu.Core.Runtime.Compilers.CsCompiler">
+            <summary>
+                Defines a runtime compiler for C# code
+            </summary>
+        </member>
+        <member name="M:Grappachu.Core.Runtime.Compilers.CsCompiler.Compile(System.String,System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+                Compiles a snipped of C# code
+            </summary>
+            <param name="csCode">The source code to be compiled</param>
+            <param name="assemblyReferences">Include the path of referenced assemblied used by code</param>
+            <returns></returns>
+        </member>
+        <member name="T:Grappachu.Core.Messaging.IConsumer`1">
+            <summary>
+                Defines a basic interface for a consumer
+            </summary>
+            <typeparam name="T">Type of message to be consumed</typeparam>
+        </member>
+        <member name="E:Grappachu.Core.Messaging.IConsumer`1.MessageReceived">
+            <summary>
+            Invoked when a message has been received
+            </summary>
+        </member>
+        <member name="M:Grappachu.Core.Messaging.IConsumer`1.BeginConsume">
+            <summary>
+            Start to consume messages  
+            </summary>
+        </member>
+        <member name="M:Grappachu.Core.Messaging.IConsumer`1.EndConsume">
+            <summary>
+            Prevent this component from consuming messages  
+            </summary>
+        </member>
+        <member name="T:Grappachu.Core.Messaging.IPublisher`1">
+            <summary>
+                Defines a basic publisher for messages
+            </summary>
+            <typeparam name="T">Type of message to be published</typeparam>
+        </member>
+        <member name="M:Grappachu.Core.Messaging.IPublisher`1.Publish(`0)">
+            <summary>
+                Publishes a message to a queue
+            </summary>
+            <param name="message"></param>
+        </member>
+        <member name="T:Grappachu.Core.Messaging.QueueException">
+            <summary>
+                Defines a basic exception for messaging errors
+            </summary>
+        </member>
+        <member name="M:Grappachu.Core.Messaging.QueueException.#ctor">
+            <summary>
+                Creates a new instance of <see cref="T:Grappachu.Core.Messaging.QueueException" />
+            </summary>
+        </member>
+        <member name="M:Grappachu.Core.Messaging.QueueException.#ctor(System.String)">
+            <summary>
+                Creates a new instance of <see cref="T:Grappachu.Core.Messaging.QueueException" />
+            </summary>
+        </member>
+        <member name="M:Grappachu.Core.Messaging.QueueException.#ctor(System.String,System.Exception)">
+            <summary>
+                Creates a new instance of <see cref="T:Grappachu.Core.Messaging.QueueException" />
+            </summary>
+        </member>
+        <member name="T:Grappachu.Core.Messaging.Envelope`1">
+            <summary>
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="M:Grappachu.Core.Messaging.Envelope`1.#ctor(System.String,`0)">
+            <summary>
+                Creates a new instance of <see cref="T:Grappachu.Core.Messaging.Envelope`1" />
+            </summary>
+            <param name="messageId">A unique id for the message</param>
+            <param name="message">the message</param>
+        </member>
+        <member name="P:Grappachu.Core.Messaging.Envelope`1.GiveAck">
+            <summary>
+                Indica se per questo messaggio verrà inviato Ack (true) o Nack (false)
+            </summary>
+        </member>
+        <member name="P:Grappachu.Core.Messaging.Envelope`1.MessageId">
+            <summary>
+                Gets the id for the message in this envelope
+            </summary>
+        </member>
+        <member name="P:Grappachu.Core.Messaging.Envelope`1.Message">
+            <summary>
+                Gets the message in this envelope
+            </summary>
+        </member>
+        <member name="T:Grappachu.Core.Security.Hashing.HashAlgorythm">
+            <summary>
+               Represents an hashing algorythm
+            </summary>
+        </member>
+        <member name="F:Grappachu.Core.Security.Hashing.HashAlgorythm.Custom">
+            <summary>
+                Used for definint custom Hashing algorythms
+            </summary>
+        </member>
+        <member name="F:Grappachu.Core.Security.Hashing.HashAlgorythm.MD5">
+            <summary>
+                MD5 encoding created by Ronald Rivest in 1991 and defined in RFC 1321.
+            </summary>
+        </member>
+        <member name="T:Grappachu.Core.Security.Hashing.IHashProvider">
+            <summary>
+                Defines a component for compute hash of data
+            </summary>
+        </member>
+        <member name="P:Grappachu.Core.Security.Hashing.IHashProvider.Algorythm">
+            <summary>
+                Gests the hashing algorythm used by this provider to compute hashes
+            </summary>
+        </member>
+        <member name="M:Grappachu.Core.Security.Hashing.IHashProvider.Hash(System.IO.FileInfo)">
+            <summary>
+                Computes the hash for a file
+            </summary>
+            <param name="file">File to be hashed</param>
+            <returns></returns>
+        </member>
+        <member name="M:Grappachu.Core.Security.Hashing.IHashProvider.Hash(System.String)">
+            <summary>
+                Computes the hash for a string
+            </summary>
+            <param name="text"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Grappachu.Core.Security.Hashing.IHashProvider.Hash(System.Byte[])">
+            <summary>
+                Computes the hash for a byte array
+            </summary>
+            <param name="bytes"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Grappachu.Core.Security.Hashing.MD5">
+            <summary>
+                Defines a component for computing hashes based on MD5 Algorythm
+            </summary>
+        </member>
+        <member name="P:Grappachu.Core.Security.Hashing.MD5.Algorythm">
+            <summary>
+                Gests the hashing algorythm used by this provider to compute hashes
+            </summary>
+        </member>
+        <member name="M:Grappachu.Core.Security.Hashing.MD5.Hash(System.IO.FileInfo)">
+            <summary>
+                Computes the hash for a file using the MD5 Algorythm
+            </summary>
+            <param name="file">File to be hashed</param>
+            <returns></returns>
+        </member>
+        <member name="M:Grappachu.Core.Security.Hashing.MD5.Hash(System.String)">
+            <summary>
+                Computes the hash for a string using the MD5 Algorythm
+            </summary>
+            <param name="text"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Grappachu.Core.Security.Hashing.MD5.Hash(System.Byte[])">
+            <summary>
+                Computes the hash for a byte array using the MD5 Algorythm
+            </summary>
+            <param name="bytes"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

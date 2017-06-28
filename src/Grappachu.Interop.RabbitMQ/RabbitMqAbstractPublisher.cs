@@ -85,5 +85,7 @@ namespace Grappachu.Interop.RabbitMQ
                 channel.BasicPublish(exchange, routing, props, messageBodyBytes);
             }
         }
+
+       
     }
 }

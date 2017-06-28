@@ -46,8 +46,11 @@ namespace Grappachu.Interop.RabbitMQ
         /// <inheritdoc />
         public void EndConsume()
         {
-            _channel.Abort();
-            _channel?.Dispose();
+            if (_channel != null)
+            {
+                _channel.Abort();
+                _channel.Dispose();
+            }
             _connection?.Dispose();
         }
 
@@ -63,9 +66,11 @@ namespace Grappachu.Interop.RabbitMQ
         {
             if (MessageReceived == null)
                 return;
+
+            IModel channel;
             try
             {
-                var channel = ((EventingBasicConsumer) sender).Model;
+                channel = ((EventingBasicConsumer) sender).Model;
                 var messageJson = OnReadingMessage(e);
                 var messageContentType = e.BasicProperties?.ContentType;
                 var messageItem = OnDeserializingMessage(messageJson, messageContentType);
@@ -81,6 +86,14 @@ namespace Grappachu.Interop.RabbitMQ
             }
         }
 
+
+        /// <summary>
+        ///     Raises the event <see cref="MessageReceived" /> to execute custom user logic
+        /// </summary>
+        protected virtual void OnMessageConsuming(Envelope<T> qm)
+        {
+            MessageReceived?.Invoke(this, qm);
+        }
 
         /// <summary>
         ///     Executes the basic Ack or Nack policies after a message is consumed
@@ -151,15 +164,6 @@ namespace Grappachu.Interop.RabbitMQ
                     _connection = null;
                 }
             }
-        }
-
-        /// <summary>
-        ///     Raises the event <see cref="MessageReceived" /> to execute custom user logic
-        /// </summary>
-        /// <param name="e"></param>
-        protected virtual void OnMessageConsuming(Envelope<T> e)
-        {
-            MessageReceived?.Invoke(this, e);
         }
     }
 }
